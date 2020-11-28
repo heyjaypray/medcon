@@ -21,7 +21,7 @@ const PageSignup = React.lazy(() => import('./pages/Pages/User/PageSignup'));
 
 // Import all components
 // const SaasOnepage = React.lazy(() => import('./pages/Saas Onepage/index'));
-const Event = React.lazy(() => import('./pages/Event/index'));
+const Event = React.lazy(() => import('./pages/Conferences/index'));
 const Home = React.lazy(() => import('./pages/Home/index'));
 // const Home = React.lazy(() => import('./pages/Home/indexMain'));
 

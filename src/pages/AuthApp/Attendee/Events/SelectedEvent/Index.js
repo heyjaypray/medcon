@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import SubbedEvents from '../SubbedEvents'
 import Sidebar from '../../../../../components/Layout/Sidebar'
-import Section from '../../../../Event/section'
+import Section from '../../../../Conferences/section'
 
 //Import Images
 import imgbg from "../../../../../images/account/bg.jpg";
