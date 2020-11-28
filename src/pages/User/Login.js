@@ -122,9 +122,9 @@ class PageLogin extends Component {
         );
     }
 }
-const mapStateToProps = ({ events, user }) => {
-    const { events_list } = events;
-    return { events_list, user };
+const mapStateToProps = ({ user }) => {
+
+    return { user };
 };
 const mapActionsToProps = {
     loginUser
