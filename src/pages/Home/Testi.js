@@ -1,88 +1,61 @@
 // React Basic and Bootstrap
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Input, InputGroup, InputGroupAddon, Button } from 'reactstrap';
 
 //Import Components
 import SectionTitle from "../../components/Shared/section-title";
-
-//Slider
-import OwlCarousel from 'react-owl-carousel';
-import '../../../node_modules/owl.carousel/dist/assets/owl.carousel.css';
-import '../../../node_modules/owl.carousel/dist/assets/owl.theme.default.css';
+import ReviewsSlider from "../../components/Shared/reviews-slider";
 
 //Import Images
-import client1 from "../../images/client/amazon.svg";
-import client2 from "../../images/client/google.svg";
-import client3 from "../../images/client/lenovo.svg";
-import client4 from "../../images/client/paypal.svg";
-import client5 from "../../images/client/shopify.svg";
-import client6 from "../../images/client/shopify.svg";
+import img1 from "../../images/client/01.jpg";
+import img2 from "../../images/client/02.jpg";
+import img3 from "../../images/client/03.jpg";
+import img4 from "../../images/client/04.jpg";
+import img5 from "../../images/client/05.jpg";
+import img6 from "../../images/client/06.jpg";
 
 class Testi extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            clients : [
-                { id : 1, image : client1, name : "Thomas Israel" , desc : "It seems that only fragments of the original text remain in the Lorem Ipsum texts used today." },
-                { id : 2, image : client2, name : "Carl Oliver" , desc : "The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century." },
-                { id : 3, image : client3, name : "Barbara McIntosh" , desc : "One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others." },
-                { id : 4, image : client4, name : "Jill Webb" , desc : "Thus, Lorem Ipsum has only limited suitability as a visual filler for German texts." },
-                { id : 5, image : client5, name : " Dean Tolle" , desc : "There is now an abundance of readable dummy texts. These are usually used when a text is required." },
-                { id : 6, image : client6, name : "Christa Smith" , desc : "According to most sources, Lorum Ipsum can be traced back to a text composed by Cicero." },
+            reviews : [
+                { id : 1, img : img1, name : "Thomas Israel", post : "C.E.O", desc : "It seems that only fragments of the original text remain in the Lorem Ipsum texts used today.", rating : 5 },
+                { id : 2, img : img2, name : "Barbara McIntosh", post : "M.D", desc : "One disadvantage of Lorum Ipsum is that in Latin certain letters appear more frequently than others.", rating : 4 },
+                { id : 3, img : img3, name : "Carl Oliver", post : "P.A", desc : "The most well-known dummy text is the 'Lorem Ipsum', which is said to have originated in the 16th century.", rating : 3 },
+                { id : 4, img : img4, name : "Christa Smith", post : "Manager", desc : "According to most sources, Lorum Ipsum can be traced back to a text composed by Cicero.", rating : 5 },
+                { id : 5, img : img5, name : "Dean Tolle", post : "Developer", desc : "There is now an abundance of readable dummy texts. These are usually used when a text is required.", rating : 5 },
+                { id : 6, img : img6, name : "ill Webb", post : "Designer", desc : "Thus, Lorem Ipsum has only limited suitability as a visual filler for German texts.", rating : 4 },
             ],
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                550: {
-                    items: 1,
-                },
-                650: {
-                    items: 2,
-                },
-                1000: {
-                    items: 3,
-                },
-            }
         }
     }
 
-    componentDidMount(){
-        var sectiontitles = document.getElementsByName("maintitle");
-        sectiontitles[1].classList.remove("mb-4");
-        sectiontitles[1].classList.remove("pb-2");
-        sectiontitles[1].classList.add("mb-60");
-    }
-
-    render() {
+       render() {
         return (
             <React.Fragment>
-                <section className="section pb-0">
+                <section className="section">
                     <Container>
-                        {/* render Section title */}
-                        <SectionTitle title="Our Happy Customers" desc=" that can provide everything you need to generate awareness, drive traffic, connect."/>
+                        {/* section title */}
+                        <SectionTitle title="What Students Say ?" desc=" that can provide everything you need to generate awareness, drive traffic, connect." />
 
-                        <Row>
-                            <Col xs="12">
-                                <OwlCarousel
-                                    className="owl-theme"
-                                    items={3}
-                                    loop
-                                    margin={1}
-                                    responsive = { this.state.responsive }
-                                    autoplay = {true}
-                                >
-                                    {
-                                        this.state.clients.map((client, key) =>
-                                            <div key={key} className="customer-testi mr-2 ml-2 text-center p-4 rounded border">
-                                                <img src={client.image} className="img-fluid avatar avatar-ex-sm mx-auto" alt=""/>
-                                                <p className="text-muted mt-4">" {client.desc} "</p>
-                                                <h6 className="text-primary">- {client.name}</h6>
-                                            </div>
-                                        )
-                                    }
-                                </OwlCarousel>
+                        {/* clients slider */}
+                        <ReviewsSlider reviews={this.state.reviews}/>
+                    </Container>
+                    <Container className="mt-100 mt-60">
+                        {/* section title */}
+                        <SectionTitle title="Request A Demo" desc=" that can provide everything you need to generate awareness, drive traffic, connect." />
+                        <Row className="justify-content-center mt-4 pt-2">
+                            <Col lg="7" md="10">
+                                <Form>
+                                    <FormGroup>
+                                        <InputGroup className="mb-3">
+                                            <Input name="email" id="email" type="email" className="form-control" placeholder="Your email :" required aria-describedby="newssubscribebtn" />
+                                            <InputGroupAddon addonType="append">
+                                                <Button className="btn btn-primary submitBnt" type="button" id="newssubscribebtn">Subscribe</Button>
+                                            </InputGroupAddon>
+                                        </InputGroup>
+                                    </FormGroup>
+                                </Form>
                             </Col>
                         </Row>
                     </Container>

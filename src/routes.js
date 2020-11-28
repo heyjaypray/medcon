@@ -22,7 +22,7 @@ const PageSignup = React.lazy(() => import('./pages/Pages/User/PageSignup'));
 // Import all components
 // const SaasOnepage = React.lazy(() => import('./pages/Saas Onepage/index'));
 const Event = React.lazy(() => import('./pages/Event/index'));
-const Course = React.lazy(() => import('./pages/Course/index'));
+const Home = React.lazy(() => import('./pages/Home/index'));
 // const Home = React.lazy(() => import('./pages/Home/indexMain'));
 
 
@@ -159,7 +159,7 @@ const routes = [
     { path: '/widget', component: Widget },
     
     //Root
-    { path: '/', component: Course },
+    { path: '/', component: Home },
 
 
 ];

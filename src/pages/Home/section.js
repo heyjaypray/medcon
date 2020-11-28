@@ -1,32 +1,65 @@
+// React Basic and Bootstrap
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
+
+//Slider
+import OwlCarousel from 'react-owl-carousel';
+import '../../../node_modules/owl.carousel/dist/assets/owl.carousel.css';
+import '../../../node_modules/owl.carousel/dist/assets/owl.theme.default.css';
 
 // import images
-import startupSVG from '../../images/illustrator/Startup_SVG.svg';
+import bg01 from '../../images/medcon2.jpg';
+// import bg04 from '../../images/medcon.jpg';
+// import bg05 from '../../images/course/bg05.jpg';
+
 
 class Section extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            items : [
+                { image : bg01, title : "MedCon is Convenience", desc : "Search through our courses to find the perfect one for you", btnText : "Find Courses", btnLink : "#", icon : "mdi-book-open-variant" },
+                // { image : bg04, title : "MedCon is Connections", desc : "Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.", btnText : "Admission Now", btnLink : "#", icon : "mdi-school" },
+                // { image : bg01, title : "MedCon is Continued Education", desc : "Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.", btnText : "Instructors", btnLink : "#", icon : "mdi-account" },
+            ],
+            autoplay: true
+        }
+    }
+
     render() {
         return (
             <React.Fragment>
-                <section className="bg-half-170 d-table w-100" id="home">
-                            <Container>
-                                <Row className="align-items-center">
-                                    <Col lg={7} md={7}>
-                                        <div className="title-heading mt-4">
-                                            <h1 className="heading mb-3">Our Creativity Is Your <span className="text-primary">Success</span> </h1>
-                                            <p className="para-desc text-muted">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.</p>
-                                            <div className="mt-4 pt-2">
-                                                <Link to="page-contact-one" className="btn btn-primary mt-2 mr-2"><i className="mdi mdi-email"></i>Get Started</Link>
-                                                <Link to="documentation" className="btn btn-outline-primary mt-2 ml-1"><i className="mdi mdi-book-outline"></i>Documentation</Link>
-                                            </div>
-                                        </div>
-                                    </Col>
-                                    <Col lg={5} md={5} className="mt-4 pt-2 mt-sm-0 pt-sm-0">
-                                        <img src={startupSVG} alt="" />
-                                    </Col>
-                                </Row>
-                            </Container>
+                 <section className="main-slider">
+                        <OwlCarousel
+                            className="slides"
+                            items={1}
+                            loop
+                            dots={false}
+                            autoplay = {true}
+                        >
+                            {
+                                this.state.items.map((item, key) =>
+                                    <li key={key} className="bg-slider d-flex align-items-center" style={{ backgroundImage: `url(${item.image})` }}>
+                                        <div className="bg-overlay"></div>
+                                                <Container>
+                                                    <Row className="justify-content-center">
+                                                        <Col xs="12" className="text-center">
+                                                            <div className="title-heading text-white mt-4">
+                                                                <h1 className="display-4 title-dark font-weight-bold mb-3">{item.title}</h1>
+                                                                <p className="para-desc para-dark mx-auto text-light">{item.desc}</p>
+                                                                <div className="mt-4">
+                                                                    <Link to={item.btnLink} className="btn btn-primary mt-2 mouse-down"><i className={"mdi " + item.icon}></i> {item.btnText}</Link>
+                                                                </div>
+                                                            </div>
+                                                        </Col>
+                                                    </Row>
+                                                </Container>
+                                    </li>
+                                )
+                            }
+                        </OwlCarousel>
                 </section>
             </React.Fragment>
         );

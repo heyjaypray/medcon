@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import events from './events/reducer'
+import conferencesReducer from './conferences/reducer'
 import users from './user/reducer'
 
 const rootReducer = combineReducers({
-    events,
+    conferencesReducer,
     users
 });
 

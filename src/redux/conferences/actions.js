@@ -3,15 +3,15 @@
   // import Cookies from 'js-cookie';
 
 
-  export const GET_EVENTS = 'GET_EVENTS'
+  export const GET_CONFERENCES = 'GET_CONFERENCES'
 
-  export function getEvents(cookie) {
+  export function getConferences(cookie) {
     return async function (dispatch) {
       const res = await axios.get(`${db_url}/conferences/`);
   
       const data = await res.data;
       return dispatch({
-        type: GET_EVENTS,
+        type: GET_CONFERENCES,
         data: data,
       });
     };

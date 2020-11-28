@@ -1,61 +1,47 @@
-// React basic and bootstrap
+// React Basic and Bootstrap
 import React, { Component } from 'react';
-import { Container, Row, Col } from "reactstrap";
+import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'reactstrap';
 
-//Import Components
-import KeyFeatureBox from "../../components/Shared/key-feature-box";
+// import images
+import insurance from "../../images/icon/insurance.svg";
+import graduationHat from "../../images/icon/graduation-hat.svg";
+import ai from "../../images/icon/ai.svg";
 
 class Feature extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            keyfeatures : [
-                { icon : "mdi-responsive", title : "Fully Responsive" },
-                { icon : "mdi-internet-explorer", title : "Browser Compatibility" },
-                { icon : "mdi-cryengine", title : "Retina Ready" },
-                { icon : "mdi-bootstrap", title : "Based On Bootstrap 4" },
-                { icon : "mdi-cube-outline", title : "Material Design Icon" },
-                { icon : "mdi-sass", title : "Built With SASS" },
-                { icon : "mdi-check-decagram", title : "W3c Valid Code" },
-                { icon : "mdi-vector-bezier", title : "Flaticon Icon" },
-                { icon : "mdi-settings-outline", title : "Easy to customize" },
-                { icon : "mdi-file-image", title : "Free Illustrator Image" },
-                { icon : "mdi-camera", title : "Free Images" },
-                { icon : "mdi-google-glass", title : "Free Google Fonts" },
-                { icon : "mdi-source-commit", title : "Well Commented Code" },
-                { icon : "mdi-code-tags", title : "Clean Code" },
-                { icon : "mdi-update", title : "Free Updates" },
-                { icon : "mdi-account-heart-outline", title : "Developer Friendly" },
-                { icon : "mdi-alpha-f-circle-outline", title : "Flatpickr" },
+            features : [
+                { icon : insurance, title : "Virtual Conferences", desc : "It is a long established fact that a reader will be of a page reader will be of a page when looking at its layout.", link : "#" },
+                { icon : graduationHat, title : "Online Courses", desc : "It is a long established fact that a reader will be of a page reader will be of a page when looking at its layout.", link : "#" },
+                { icon : ai, title : "Expert Faculty", desc : "It is a long established fact that a reader will be of a page reader will be of a page when looking at its layout.", link : "#" },
             ]
         }
     }
+
     render() {
         return (
             <React.Fragment>
-                <section className="section-two">
+                <section className="section">
                     <Container>
-                        <Row className="justify-content-center">
-                            <Col lg="8" md="12">
-                                <div className="section-title text-center">
-                                    <h3 className="mb-4">Template Features</h3>
-                                </div>
-                            </Col>
-                        </Row>
-
-                        <Row className="mt-3">
-                            <KeyFeatureBox keyfeatures={this.state.keyfeatures} />
-                            {/* <div className="col-lg-4 col-md-6 mt-4 pt-2">
-                                <div className="key-feature d-flex p-3 rounded shadow">
-                                    <div className="icon text-center rounded-pill mr-3">
-                                        <i className="mdi mdi-responsive text-custom"></i>
-                                    </div>
-                                    <div className="content mt-2">
-                                        <h4 className="title mb-0">Fully Responsive</h4>
-                                    </div>
-                                </div>
-                            </div> */}
+                        <Row>
+                            {
+                                this.state.features.map((feature, key) =>
+                                    <Col md={4} key={key}>
+                                        <div className="course-feature text-center position-relative d-block overflow-hidden bg-white rounded p-4 pt-5 pb-5">
+                                            <div className="icon">
+                                                <img src={feature.icon} className="avatar avatar-small" height="55" alt="" />
+                                            </div>
+                                            <h4 className="mt-3"><Link to={feature.link} className="title text-dark"> {feature.title}</Link></h4>
+                                            <p className="text-muted">{feature.desc} </p>
+                                            <Link to={feature.link} className="text-primary read-more">Read More <i className="mdi mdi-chevron-right"></i></Link>
+                                            <img src={feature.icon} className="full-img" height="300" alt="" />
+                                        </div>
+                                    </Col>
+                                )
+                            }
                         </Row>
                     </Container>
                 </section>
@@ -63,4 +49,5 @@ class Feature extends Component {
         );
     }
 }
+
 export default Feature;

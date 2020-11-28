@@ -1,18 +1,18 @@
 import {
-    GET_EVENTS
+  GET_CONFERENCES
   } from './actions';
   
   const initialState = {
-    events_list: []
+    conferences: []
   };
   
   export default function (state = initialState, action) {
     const { type, data } = action;
     switch (type) {
-      case GET_EVENTS:
+      case GET_CONFERENCES:
         return {
           ...state,
-          events_list: data
+          conferences: data
         };  
       default:
         return {
