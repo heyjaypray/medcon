@@ -107,7 +107,7 @@ class AttendeeEvents extends Component {
                     <Col lg="10" md="9">
                       <Row className="align-items-center">
                         <Col md="7" className="text-md-left text-center mt-4 mt-sm-0">
-                          <h3 className="title mb-0">Events</h3>
+                          <h3 className="title mb-0">Conferences</h3>
                         </Col>
                       </Row>
                     </Col>
@@ -124,7 +124,7 @@ class AttendeeEvents extends Component {
             <Row>
               <Col lg="8" md="7" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <div className="ml-lg-3">
-                  <h5 className="mt-4 mb-0">Subscribed Events :</h5>
+                  <h5 className="mt-4 mb-0">Subscribed Conferences :</h5>
                   <SubbedEvents user={user} />
                 </div>
               </Col>

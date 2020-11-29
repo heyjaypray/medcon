@@ -167,7 +167,7 @@ class PageProfile extends Component {
                     <p className="text-muted mb-0">I have started my career as a trainee and prove my self and achieve all the milestone with good guidance and reach up to the project manager. In this journey, I understand all the procedure which make me a good developer, team leader, and a project manager.</p>
                   </div>
 
-                  <h5 className="mt-4 mb-0">Subscribed Events :</h5>
+                  <h5 className="mt-4 mb-0">Subscribed Conferences :</h5>
                  <SubbedEvents user={user} />
                 </div>
               </Col>
