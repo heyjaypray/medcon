@@ -26,7 +26,7 @@ class SubbedEvents extends Component {
                                 <div className="content p-4">
                                     <h4><Link to="#" className="title text-dark">{event.Title}</Link></h4>
                                     <div className="post-meta mt-3">
-                                        <Link to={eventIsLive ? '/account/events/' + event.id : '/event/' + event.id } className="text-muted float-right readmore">View Event <i className="mdi mdi-chevron-right"></i></Link>
+                                        <Link to={eventIsLive ? '/account/conference/' + event.id : '/conference/' + event.id } className="text-muted float-right readmore">View Event <i className="mdi mdi-chevron-right"></i></Link>
                                         <ul className="list-unstyled mb-0">
                                             <li className="list-inline-item mr-2"><Link to="#" className="text-muted like"><i className="mdi mdi-heart-outline mr-1"></i>{event.likes}</Link></li>
                                             <li className="list-inline-item"><Link to="#" className="text-muted comments"><i className="mdi mdi-comment-outline mr-1"></i>{event.blogComments}</Link></li>
@@ -42,7 +42,7 @@ class SubbedEvents extends Component {
                     )
                 }
                 <Col xs="12" className="mt-4 pt-2">
-                    <Link to="/page-blog" className="btn btn-primary">View Event <i className="mdi mdi-chevron-right"></i></Link>
+                    <Link to="/page-blog" className="btn btn-primary">View More Events <i className="mdi mdi-chevron-right"></i></Link>
                 </Col>
             </Row>
 

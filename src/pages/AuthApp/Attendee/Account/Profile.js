@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Container, Row, Col, UncontrolledTooltip, Progress } from "reactstrap";
 import { connect } from 'react-redux'
-import SubbedEvents from '../Events/SubbedEvents'
+import SubbedEvents from '../Conference/SubbedEvents'
 
 //Import Images
 import imgbg from "../../../../images/account/bg.jpg";

@@ -14,9 +14,9 @@ class Topbar extends Component {
       isOpen: false,
       navLinks: [
         { id: 1, title: "Home", link: "/" },
-        { id: 2, title: "Upcoming Events", link: "/" },
+        { id: 2, title: "Conferences", link: "/" },
         { id: 3, title: "Courses", link: "/" },
-        { id: 4, title: "Exhibitors", link: "/" },
+        { id: 4, title: "Webinars", link: "/" },
         { id: 5, title: "Account", link: "/account" }
       ]
     };

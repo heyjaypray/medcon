@@ -72,9 +72,9 @@ const ForgotPassword = React.lazy(() => import('./pages/User/ForgotPassword'));
 
 //Attendee Account
 const AttendeeAccount = React.lazy(() => import('./pages/AuthApp/Attendee/Account/Profile'));
-const AttendeeEvents = React.lazy(() => import('./pages/AuthApp/Attendee/Events/EventList'));
-const AttendeeSelectedEvent = React.lazy(() => import('./pages/AuthApp/Attendee/Events/SelectedEvent/Index'));
-const AttendeeEventSessions = React.lazy(() => import('./pages/AuthApp/Attendee/Events/SelectedEvent/Sessions/Index'));
+const AttendeeEvents = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/EventList'));
+const AttendeeSelectedEvent = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/SelectedEvent/Index'));
+const AttendeeEventSessions = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/SelectedEvent/Sessions/Index'));
 
 
 
@@ -101,9 +101,9 @@ const routes = [
 
 
     { path: '/account', component: AttendeeAccount, auth: true },
-    { path: '/account/events', component: AttendeeEvents, auth: true },
-    { path: '/account/events/:id', component: AttendeeSelectedEvent, auth: true, sidebar: true  },
-    { path: '/account/events/:id/sessions', component: AttendeeEventSessions, auth: true, sidebar: true  },
+    { path: '/account/conferences', component: AttendeeEvents, auth: true },
+    { path: '/account/conference/:id', component: AttendeeSelectedEvent, auth: true, sidebar: true  },
+    { path: '/account/conference/:id/sessions', component: AttendeeEventSessions, auth: true, sidebar: true  },
 
 
 
@@ -112,7 +112,8 @@ const routes = [
     
     { path: '/index-payments', component: Payments },
     { path: '/index-event', component: Event },
-    { path: '/event/:id', component: Event },
+
+    { path: '/conference/:id', component: Event },
     { path: '/app/events/', component: Event },
 
 

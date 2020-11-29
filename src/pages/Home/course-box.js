@@ -18,7 +18,7 @@ class CourseBox extends Component {
                                     <div className="position-relative d-block overflow-hidden">
                                         <img src={course.Photos[0] ? course.Photos[0].url : ''} className="img-fluid rounded-top mx-auto" alt="" />
                                         <div className="overlay-work"></div>
-                                        <Link to={'/event/' + course.id} className="text-white h6 preview">View Event <i className="mdi mdi-chevron-right"></i></Link>
+                                        <Link to={'/conference/' + course.id} className="text-white h6 preview">View Event <i className="mdi mdi-chevron-right"></i></Link>
                                     </div>
                                     <div className="content p-3">
                                         <h5><Link to="#" className="title text-dark">{course.Title}</Link></h5>

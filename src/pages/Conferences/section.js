@@ -46,7 +46,7 @@ class Section extends Component {
       return (
         <React.Fragment>
           <Parallax
-            bgImage={event.Media ? event.Media.url : ''}
+            bgImage={event.Photos ? event.Photos[0].url : ''}
             bgImageAlt="Image"
             strength={300}
           >

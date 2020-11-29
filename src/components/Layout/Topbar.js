@@ -21,8 +21,9 @@ class Topbar extends Component {
       ],
       authNavlinks: [
         { id: 1, title: "Account", link: "/account" },
-        { id: 2, title: "Events", link: "/account/events" },
+        { id: 2, title: "Conferences", link: "/account/conferences" },
         { id: 3, title: "Courses", link: "/account" },
+        { id: 4, title: "Webinars", link: "/account" },
         { id: 4, title: "Connections", link: "/account" },
       ],
     };
