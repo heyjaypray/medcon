@@ -66,7 +66,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.getConferences()
+    const cookie = Cookies.get("jwt");
+    this.props.getConferences(cookie, 3)
     this.cookies()
   }
 

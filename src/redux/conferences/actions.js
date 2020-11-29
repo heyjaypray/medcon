@@ -5,9 +5,9 @@
 
   export const GET_CONFERENCES = 'GET_CONFERENCES'
 
-  export function getConferences(cookie) {
+  export function getConferences(cookie, amt) {
     return async function (dispatch) {
-      const res = await axios.get(`${db_url}/conferences/`);
+      const res = await axios.get(`${db_url}/conferences?_limit=${amt}`);
   
       const data = await res.data;
       return dispatch({

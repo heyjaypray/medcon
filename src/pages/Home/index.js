@@ -12,14 +12,18 @@ import Services from './Services';
 import Testi from './Testi';
 import Partners from '../../components/Shared/Partners';
 import Section from './section';
+import Cookies from 'js-cookie'
 
 import { getConferences } from '../../redux/conferences/actions'
+
+const cookie = Cookies.get("jwt");
 
 class Index extends Component {
   componentDidMount() {
     document.body.classList = '';
     document.getElementById('topnav').classList.add('bg-white');
     window.addEventListener('scroll', this.scrollNavigation, true);
+    
   }
 
   // Make sure to remove the DOM listener when the component is unmounted.
