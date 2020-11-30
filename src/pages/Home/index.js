@@ -46,6 +46,7 @@ class Index extends Component {
     const { conferences, courses } = this.props;
 
     const items = [conferences, courses]
+    const categories = ['Conferences', 'Courses']
 
     return (
       <React.Fragment>
@@ -63,7 +64,7 @@ class Index extends Component {
 
         {/* Services */}
 
-        <Carousel items={items} category="Conferences" />
+        <Carousel items={items} categories={categories} />
         {/* <Services  /> */}
 
         {/* Cta1 */}

@@ -20,7 +20,7 @@ class Section extends Component {
     }
 
     render() {
-        const { items } = this.props
+        const { items, categories } = this.props
 
         console.log('items', items)
         return (
@@ -40,7 +40,7 @@ class Section extends Component {
                                                 <Container>
                                                     <Row className="justify-content-center">
                                                         <Col xs="12" className="text-center">
-                                                            <Services conferences={item} />
+                                                            <Services conferences={item} category={categories[key]} />
                                                         </Col>
                                                     </Row>
                                                 </Container>

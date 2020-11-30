@@ -29,21 +29,21 @@ class Services extends Component {
     }
 
     render() {
-        const { conferences } = this.props;
+        const { conferences, category } = this.props;
         console.log('conferences', conferences)
         return (
             <React.Fragment>
                 <section className="section" id="courses">
                     <Container>
                         {/* section title */}
-                        <SectionTitle title="Conferences" desc=" that can provide everything you need to generate awareness, drive traffic, connect." />
+                        <SectionTitle title={category} desc=" that can provide everything you need to generate awareness, drive traffic, connect." />
 
                         <Row>
                             {/* coursebox */}
                             <CourseBox conferences={conferences} />
 
                             <Col className="mt-4 pt-2 text-center">
-                                <Link to="#" className="btn btn-primary">See More Conferences <i className="mdi mdi-chevron-right"></i></Link>
+                                <Link to="#" className="btn btn-primary">See More {category} <i className="mdi mdi-chevron-right"></i></Link>
                             </Col>
                         </Row>
                     </Container>
