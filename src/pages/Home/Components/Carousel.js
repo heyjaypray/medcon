@@ -27,15 +27,15 @@ class Section extends Component {
             <React.Fragment>
                  <section className="main-slider">
                         <OwlCarousel
-                            className="slides"
+                            className="owl-theme"
                             items={1}
                             loop
-                            dots={false}
+                            nav={true}
                             autoplay = {true}
                         >
                             {
                                 this.props.items.map((item, key) =>
-                                    <li key={key} className="bg-slider d-flex align-items-center" >
+                                    <li key={key} className="d-flex align-items-center" >
                                         <div></div>
                                                 <Container>
                                                     <Row className="justify-content-center">
