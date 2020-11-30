@@ -76,7 +76,7 @@ class Speakers extends Component {
     
                             <Row>
                                 {/* teambox */}
-                                <TeamBox candidates={event.speakers} />
+                                <TeamBox candidates={event.speakers ? event.speakers : []} />
                             </Row>
                         </Container>
     

@@ -29,8 +29,8 @@ class Services extends Component {
     }
 
     render() {
-        const { conferences, category } = this.props;
-        console.log('conferences', conferences)
+        const { items, category } = this.props;
+        console.log('conferences', items)
         return (
             <React.Fragment>
                 <section className="section" id="courses">
@@ -40,7 +40,7 @@ class Services extends Component {
 
                         <Row>
                             {/* coursebox */}
-                            <CourseBox conferences={conferences} />
+                            <CourseBox items={items} category={category} />
 
                             <Col className="mt-4 pt-2 text-center">
                                 <Link to="#" className="btn btn-primary">See More {category} <i className="mdi mdi-chevron-right"></i></Link>

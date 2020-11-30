@@ -40,7 +40,7 @@ class Section extends Component {
                                                 <Container>
                                                     <Row className="justify-content-center">
                                                         <Col xs="12" className="text-center">
-                                                            <Services conferences={item} category={categories[key]} />
+                                                            <Services items={item} category={categories[key]} />
                                                         </Col>
                                                     </Row>
                                                 </Container>

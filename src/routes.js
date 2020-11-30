@@ -21,7 +21,8 @@ const PageSignup = React.lazy(() => import('./pages/Pages/User/PageSignup'));
 
 // Import all components
 // const SaasOnepage = React.lazy(() => import('./pages/Saas Onepage/index'));
-const Event = React.lazy(() => import('./pages/Conferences/index'));
+const Conference = React.lazy(() => import('./pages/Conferences/index'));
+const Course = React.lazy(() => import('./pages/Courses/index'));
 const Home = React.lazy(() => import('./pages/Home/index'));
 // const Home = React.lazy(() => import('./pages/Home/indexMain'));
 
@@ -111,10 +112,17 @@ const routes = [
 
     
     { path: '/index-payments', component: Payments },
-    { path: '/index-event', component: Event },
+    { path: '/index-event', component: Conference },
 
-    { path: '/conference/:id', component: Event },
-    { path: '/app/events/', component: Event },
+
+
+    //PAGESSSSSS
+    { path: '/conferences/:id', component: Conference },
+    { path: '/courses/:id', component: Course },
+    { path: '/app/events/', component: Conference },
+
+
+
 
 
     { path: '/page-aboutus', component: PageAboutUs },

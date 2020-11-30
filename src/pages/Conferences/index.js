@@ -96,8 +96,8 @@ class Index extends Component {
     }
 }
 
-const mapStateToProps = ({ conferencesReducer }) => {
-    const { conferences } = conferencesReducer;
+const mapStateToProps = ({ main }) => {
+    const { conferences } = main;
     return { conferences };
 };
 const mapActionsToProps = {

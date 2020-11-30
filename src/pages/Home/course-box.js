@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Col } from 'reactstrap';
+import _ from 'lodash'
 
 //Star Rating
 // import StarRatings from 'react-star-ratings';
@@ -8,23 +9,23 @@ import { Col } from 'reactstrap';
 class CourseBox extends Component {
 
     render() {
-        console.log('this' , this.props.conferences)
-        if(this.props.conferences){
+        const { items, category } = this.props;
+        if(items){
             return (
                 <React.Fragment>
                     {
-                        this.props.conferences.map((course, key) =>
+                        items.map((item, key) =>
                             <Col lg="4" md="6" xs="12" key={key} className="mt-4 pt-2">
                                 <div className="courses-desc position-relative overflow-hidden rounded border">
                                     <div className="position-relative d-block overflow-hidden">
-                                        <img src={course.Photos[0] ? course.Photos[0].url : ''} className="img-fluid rounded-top mx-auto" alt="" />
+                                        <img src={item.Photos[0] ? item.Photos[0].url : ''} className="img-fluid rounded-top mx-auto" alt="" />
                                         <div className="overlay-work"></div>
-                                        <Link to={'/conference/' + course.id} className="text-white h6 preview">View Event <i className="mdi mdi-chevron-right"></i></Link>
+                                        <Link to={`/${_.lowerCase(category)}/${item.id}`} className="text-white h6 preview">View Event <i className="mdi mdi-chevron-right"></i></Link>
                                     </div>
                                     <div className="content p-3">
-                                        <h5><Link to="#" className="title text-dark">{course.Title}</Link></h5>
-                                        <p>Hosted by {course.organizer ? course.organizer.Name : 'a'}</p>
-                                        <p>{course.Description}</p>
+                                        <h5><Link to="#" className="title text-dark">{item.Title}</Link></h5>
+                                        <p>Hosted by {item.organizer ? item.organizer.Name : 'a'}</p>
+                                        <p>{item.Description}</p>
                                         
                                         <div className="fees">
                                             <ul className="list-unstyled float-left mb-0">

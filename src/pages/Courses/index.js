@@ -20,7 +20,7 @@ class Index extends Component {
 
     componentDidMount() {
 
-        const { conferences } = this.props;
+        const { courses } = this.props;
         window.scrollTo(0, 0)
 
         document.body.classList = "";
@@ -28,7 +28,7 @@ class Index extends Component {
         window.addEventListener("scroll", this.scrollNavigation, true);
 
         const { id } = this.props.match.params;
-        this.setState({ event: conferences.find(s => s.id == id) })
+        this.setState({ event: courses.find(s => s.id == id) })
 
 
     }
@@ -96,9 +96,9 @@ class Index extends Component {
     }
 }
 
-const mapStateToProps = ({ conferencesReducer }) => {
-    const { conferences } = conferencesReducer;
-    return { conferences };
+const mapStateToProps = ({ main }) => {
+    const { courses } = main;
+    return { courses };
 };
 const mapActionsToProps = {
 
