@@ -1,9 +1,11 @@
 import {
-  GET_CONFERENCES
+  GET_CONFERENCES,
+  GET_COURSES
   } from './actions';
   
   const initialState = {
-    conferences: []
+    conferences: [],
+    courses: []
   };
   
   export default function (state = initialState, action) {
@@ -14,6 +16,11 @@ import {
           ...state,
           conferences: data
         };  
+        case GET_COURSES:
+          return {
+            ...state,
+            courses: data
+          };  
       default:
         return {
           ...state,

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import SubbedEvents from '../SubbedEvents'
 import Sidebar from '../../../../../components/Layout/Sidebar'
-import Section from '../../../../Conferences/section'
+import Banner from '../../../../Conferences/Banner'
 
 //Import Images
 import imgbg from "../../../../../images/account/bg.jpg";
@@ -110,7 +110,7 @@ class LiveEvent extends Component {
 
                     <Row className='align-items-center'>
                         <Col lg="12" md="9">
-                            <Section event={user.conferences[0]} />
+                            <Banner event={user.conferences[0]} />
                         </Col>
                     </Row>
 

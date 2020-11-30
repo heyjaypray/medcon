@@ -2,7 +2,7 @@ import React, { Component, Suspense, Fragment } from 'react';
 import Layout from './components/Layout/';
 import { Route, Redirect, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getConferences } from './redux/conferences/actions'
+import { getConferences, getCourses } from './redux/main/actions'
 import { getUser } from './redux/user/actions'
 import Cookies from 'js-cookie'
 
@@ -66,8 +66,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const cookie = Cookies.get("jwt");
-    this.props.getConferences(cookie, 3)
+    this.props.getConferences(3)
+    this.props.getCourses(3)
     this.cookies()
   }
 
@@ -121,13 +121,14 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ conferencesReducer, users }) => {
-  const { conferences } = conferencesReducer
+const mapStateToProps = ({ main, users }) => {
+  const { conferences } = main
   const { loggedIn } = users
   return { conferences, loggedIn };
 };
 const mapActionsToProps = {
   getConferences,
+  getCourses,
   getUser
 };
 

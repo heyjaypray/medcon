@@ -21,7 +21,7 @@ class Section extends Component {
         this.state = {
             items : [
                 { image : bg01, title : "MedCon is Convenience", desc : "Search through our courses to find the perfect one for you", btnText : "Find Courses", btnLink : "#", icon : "mdi-book-open-variant" },
-                // { image : bg04, title : "MedCon is Connections", desc : "Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.", btnText : "Admission Now", btnLink : "#", icon : "mdi-school" },
+                // { image : bg01, title : "MedCon is Connections", desc : "Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.", btnText : "Admission Now", btnLink : "#", icon : "mdi-school" },
                 // { image : bg01, title : "MedCon is Continued Education", desc : "Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.", btnText : "Instructors", btnLink : "#", icon : "mdi-account" },
             ],
             autoplay: true

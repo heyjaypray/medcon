@@ -8,6 +8,7 @@ import { Col } from 'reactstrap';
 class CourseBox extends Component {
 
     render() {
+        console.log('this' , this.props.conferences)
         if(this.props.conferences){
             return (
                 <React.Fragment>
@@ -22,7 +23,7 @@ class CourseBox extends Component {
                                     </div>
                                     <div className="content p-3">
                                         <h5><Link to="#" className="title text-dark">{course.Title}</Link></h5>
-                                        <p>Hosted by {course.organizer.Name}</p>
+                                        <p>Hosted by {course.organizer ? course.organizer.Name : 'a'}</p>
                                         <p>{course.Description}</p>
                                         
                                         <div className="fees">

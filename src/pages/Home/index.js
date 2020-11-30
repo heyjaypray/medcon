@@ -11,10 +11,12 @@ import Cta1 from './Cta1';
 import Services from './Services';
 import Testi from './Testi';
 import Partners from '../../components/Shared/Partners';
-import Section from './section';
+import Section from './Banner';
 import Cookies from 'js-cookie'
 
-import { getConferences } from '../../redux/conferences/actions'
+import Carousel from './Components/Carousel'
+
+import { getConferences } from '../../redux/main/actions'
 
 const cookie = Cookies.get("jwt");
 
@@ -41,6 +43,10 @@ class Index extends Component {
   };
 
   render() {
+    const { conferences, courses } = this.props;
+
+    const items = [conferences, courses]
+
     return (
       <React.Fragment>
         {/* Hero Start */}
@@ -56,7 +62,9 @@ class Index extends Component {
         <Cta />
 
         {/* Services */}
-        <Services />
+
+        <Carousel items={items} category="Conferences" />
+        {/* <Services  /> */}
 
         {/* Cta1 */}
         <Cta1 />
@@ -75,7 +83,10 @@ class Index extends Component {
   }
 }
 
-const mapStateToProps = ({ events }) => {};
+const mapStateToProps = ({ main }) => {
+  const { conferences, courses } = main;
+  return { conferences, courses };
+};
 const mapActionsToProps = {
     getConferences
 };

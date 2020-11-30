@@ -30,7 +30,7 @@ class Services extends Component {
 
     render() {
         const { conferences } = this.props;
-
+        console.log('conferences', conferences)
         return (
             <React.Fragment>
                 <section className="section" id="courses">
@@ -63,15 +63,15 @@ class Services extends Component {
     }
 }
 
-const mapStateToProps = ({ conferencesReducer }) => {
-    const { conferences } = conferencesReducer;
-    return { conferences };
-  };
+// const mapStateToProps = ({ conferencesReducer }) => {
+//     const { conferences } = conferencesReducer;
+//     return { conferences };
+//   };
   const mapActionsToProps = {
 
   };
   
   export default connect(
-    mapStateToProps,
+    null,
     mapActionsToProps
   )(Services);
