@@ -80,95 +80,95 @@ const AttendeeEventSessions = React.lazy(() => import('./pages/AuthApp/Attendee/
 
 
 const routes = [
-    //routes without Layout
+  //routes without Layout
 
-    //Contct withour layout
-    { path: '/page-contact-detail', component: PageContactDetail, isWithoutLayout : true },
+  //Contct withour layout
+  { path: '/page-contact-detail', component: PageContactDetail, isWithoutLayout : true },
 
-    //Special Pages
-    { path: '/page-comingsoon', component: PageComingSoon, isWithoutLayout : true },
-    { path: '/page-comingsoon2', component: PageComingSoon2, isWithoutLayout : true },
-    { path: '/page-error', component: PageError, isWithoutLayout : true },
-    { path: '/page-maintenance', component: PageMaintenance, isWithoutLayout : true },
+  //Special Pages
+  { path: '/page-comingsoon', component: PageComingSoon, isWithoutLayout : true },
+  { path: '/page-comingsoon2', component: PageComingSoon2, isWithoutLayout : true },
+  { path: '/page-error', component: PageError, isWithoutLayout : true },
+  { path: '/page-maintenance', component: PageMaintenance, isWithoutLayout : true },
 
-    //User Pages
-    { path: '/login', component: PageLogin, isWithoutLayout : true },
-    { path: '/user/login', component: PageLogin, isWithoutLayout : true },
-    { path: '/signup', component: PageSignup, isWithoutLayout : true },
-    { path: '/page-cover-login', component: PageCoverLogin, isWithoutLayout : true },
-    { path: '/page-recovery-password', component: PageRecoveryPassword, isWithoutLayout : true },
-    { path: '/page-cover-re-password', component: PageCoverRePassword, isWithoutLayout : true},
-    { path: '/page-cover-signup', component: PageCoverSignup, isWithoutLayout : true },
-
-
-    { path: '/account', component: AttendeeAccount, auth: true },
-    { path: '/account/conferences', component: AttendeeEvents, auth: true },
-    { path: '/account/conference/:id', component: AttendeeSelectedEvent, auth: true, sidebar: true  },
-    { path: '/account/conference/:id/sessions', component: AttendeeEventSessions, auth: true, sidebar: true  },
+  //User Pages
+  { path: '/login', component: PageLogin, isWithoutLayout : true },
+  { path: '/user/login', component: PageLogin, isWithoutLayout : true },
+  { path: '/signup', component: PageSignup, isWithoutLayout : true },
+  { path: '/page-cover-login', component: PageCoverLogin, isWithoutLayout : true },
+  { path: '/page-recovery-password', component: PageRecoveryPassword, isWithoutLayout : true },
+  { path: '/page-cover-re-password', component: PageCoverRePassword, isWithoutLayout : true},
+  { path: '/page-cover-signup', component: PageCoverSignup, isWithoutLayout : true },
 
 
+  { path: '/account', component: AttendeeAccount, auth: true },
+  { path: '/account/conferences', component: AttendeeEvents, auth: true },
+  { path: '/account/conference/:id', component: AttendeeSelectedEvent, auth: true, sidebar: true  },
+  { path: '/account/conference/:id/sessions', component: AttendeeEventSessions, auth: true, sidebar: true  },
 
-    { path: '/forgot-password', component: ForgotPassword },
+
+
+  { path: '/forgot-password', component: ForgotPassword },
 
     
-    { path: '/index-payments', component: Payments },
-    { path: '/index-event', component: Conference },
+  { path: '/index-payments', component: Payments },
+  { path: '/index-event', component: Conference },
 
 
 
-    //PAGESSSSSS
-    { path: '/conferences/:id', component: Conference },
-    { path: '/courses/:id', component: Course },
-    { path: '/app/events/', component: Conference },
+  //PAGESSSSSS
+  { path: '/conferences/:id', component: Conference },
+  { path: '/courses/:id', component: Course },
+  { path: '/app/events/', component: Conference },
 
 
 
 
 
-    { path: '/page-aboutus', component: PageAboutUs },
-    { path: '/page-pricing', component: PagePricing },
-    { path: '/page-services', component: PageServices },
-    { path: '/page-team', component: PageTeam },
+  { path: '/page-aboutus', component: PageAboutUs },
+  { path: '/page-pricing', component: PagePricing },
+  { path: '/page-services', component: PageServices },
+  { path: '/page-team', component: PageTeam },
 
-    //Utility
-    { path: '/page-terms', component: PageTerms },
-    { path: '/page-privacy', component: PagePrivacy },
+  //Utility
+  { path: '/page-terms', component: PageTerms },
+  { path: '/page-privacy', component: PagePrivacy },
 
-    //Page Work
-    { path: '/page-work', component: PageWork },
-    { path: '/page-work-detail', component: PageWorkDetail },
+  //Page Work
+  { path: '/page-work', component: PageWork },
+  { path: '/page-work-detail', component: PageWorkDetail },
 
-    //Page Profile
-    { path: '/page-profile', component: PageProfile },
-    { path: '/page-profile-edit', component: PageProfileEdit },
-    { path: '/page-invoice', component: PageInvoice },
+  //Page Profile
+  { path: '/page-profile', component: PageProfile },
+  { path: '/page-profile-edit', component: PageProfileEdit },
+  { path: '/page-invoice', component: PageInvoice },
 
-    //Page Job
-    { path: '/page-job', component: PageJob },
-    { path: '/page-job-apply', component: PageJobApply },
-    { path: '/page-job-detail', component: PageJobDetail },
-    { path: '/page-jobs-sidebar', component: PageJobsSidebar },
-    { path: '/page-job-company', component: PageJobCompany },
-    { path: '/page-job-candidate', component: PageJobCandidate },
+  //Page Job
+  { path: '/page-job', component: PageJob },
+  { path: '/page-job-apply', component: PageJobApply },
+  { path: '/page-job-detail', component: PageJobDetail },
+  { path: '/page-jobs-sidebar', component: PageJobsSidebar },
+  { path: '/page-job-company', component: PageJobCompany },
+  { path: '/page-job-candidate', component: PageJobCandidate },
 
-    //Page Blog
-    { path: '/page-blog', component: PageBlog },
-    { path: '/page-blog-detail', component: PageBlogDetail },
-    { path: '/page-blog-sidebar', component: PageBlogSidebar },
+  //Page Blog
+  { path: '/page-blog', component: PageBlog },
+  { path: '/page-blog-detail', component: PageBlogDetail },
+  { path: '/page-blog-sidebar', component: PageBlogSidebar },
 
-    //Page Contact
-    { path: '/page-contact-one', component: PageContactOne },
-    { path: '/page-contact-three', component: PageContactThree },
-    { path: '/page-contact-two', component: PageContactTwo },
+  //Page Contact
+  { path: '/page-contact-one', component: PageContactOne },
+  { path: '/page-contact-three', component: PageContactThree },
+  { path: '/page-contact-two', component: PageContactTwo },
 
-    //Docs
-    { path: '/changelog', component: ChangeLog },
-    { path: '/components', component: Components },
-    { path: '/documentation', component: Documentation },
-    { path: '/widget', component: Widget },
+  //Docs
+  { path: '/changelog', component: ChangeLog },
+  { path: '/components', component: Components },
+  { path: '/documentation', component: Documentation },
+  { path: '/widget', component: Widget },
     
-    //Root
-    { path: '/', component: Home },
+  //Root
+  { path: '/', component: Home },
 
 
 ];

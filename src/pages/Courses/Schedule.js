@@ -60,6 +60,7 @@ class Schedule extends Component {
                               <p className="text-muted location-time"><span className="text-dark h6">Speakers:</span> {event.speakers.map(i => {
                                 return <p>{i.Name}</p>;
                               })}
+                              <p>{show.Description}</p>
                               </p>
                             </div>
                           </div>
