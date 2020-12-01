@@ -36,10 +36,7 @@ import moment from 'moment';
 //     }
 // };
 
-
 class Section extends Component {
-
-
   render() {
     const { event } = this.props;
     if (event) {
@@ -47,55 +44,62 @@ class Section extends Component {
         <React.Fragment>
           <Parallax
             bgImage={event.Photos ? event.Photos[0].url : ''}
-            bgImageAlt="Image"
+            bgImageAlt='Image'
             strength={300}
           >
-            <section className="bg-home d-flex align-items-center" >
-              <div className="bg-overlay bg-overlay-gradient"></div>
+            <section className='bg-home d-flex align-items-center'>
+              <div className='bg-overlay bg-overlay-gradient'></div>
               <Container>
-                <Row className="justify-content-center">
-                  <Col lg="10" className="text-center">
-                    <div className="title-heading">
-                      <h4 className="text-success mb-3">{moment(event.StartDate).format('MMMM D YYYY')} - {moment(event.EndDate).format('MMMM D YYYY')}</h4>
-                      <h1 className="display-4 title-dark text-white font-weight-bold mb-3">{event.Title}</h1>
-                      <p className="para-desc title-dark mx-auto text-light">{event.Description}</p>
+                <Row className='justify-content-center'>
+                  <Col lg='10' className='text-center'>
+                    <div className='title-heading'>
+                      <h1 className='display-4 title-dark text-white font-weight-bold mb-3'>
+                        {event.Title}
+                      </h1>
+                      <p className='para-desc title-dark mx-auto text-light'>
+                        {event.Description}
+                      </p>
 
                       <Row>
-                        <Col md="12" className="text-center">
-                          <div id="eventdown">
+                        <Col md='12' className='text-center'>
+                          <div id='eventdown'>
                             {/* <Countdown
-                                                            date={Date.now() + 1199658655000}
-                                                            renderer={renderer}
-                                                        /> */}
+                                date={Date.now() + 1199658655000}
+                                renderer={renderer}
+                            /> */}
                           </div>
                         </Col>
                       </Row>
 
-                      <div className="mt-4 pt-2">
-                        <Link to="#" className="btn btn-success mt-2 mr-2"><i className="mdi mdi-ticket"></i> Reserve Your Spot</Link>
+                      <div className='mt-4 pt-2'>
+                        <Link to='#' className='btn btn-success mt-2 mr-2'>
+                          <i className='mdi mdi-ticket'></i> Subscribe
+                        </Link>
+                        <Link to='#' className='btn btn-success mt-2 mr-2'>
+                          <i className='mdi mdi-ticket'></i> Buy Now
+                        </Link>
                       </div>
                     </div>
                   </Col>
                 </Row>
               </Container>
             </section>
-            <div className="position-relative">
-              <div className="shape overflow-hidden text-footer">
-                <div className="text-center bg-white p-4">
-                  <h5 className="text-dark mb-0">Brought to you by {event.organizer ? event.organizer.Name : 'MedCon'}</h5>
+            <div className='position-relative'>
+              <div className='shape overflow-hidden text-footer'>
+                <div className='text-center bg-white p-4'>
+                  <h5 className='text-dark mb-0'>
+                    Brought to you by{' '}
+                    {event.organizer ? event.organizer.Name : 'MedCon'}
+                  </h5>
                 </div>
               </div>
             </div>
-
           </Parallax>
         </React.Fragment>
-      )
+      );
     } else {
-      return (
-        <div />
-      )
+      return <div />;
     }
-
   }
 }
 
