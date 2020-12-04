@@ -40,6 +40,7 @@ class SubbedEvents extends Component {
             className="owl-theme"
             loop
             margin={10}
+            items={4}
             nav
           >
 
