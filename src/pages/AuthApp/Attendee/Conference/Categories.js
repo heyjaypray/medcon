@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, UncontrolledTooltip, Progress, PaginationItem, PaginationLink, Pagination } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import Slider from 'react-slick';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation } from 'swiper';
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+
+SwiperCore.use([Navigation]);
 
 class SubbedEvents extends Component {
 
@@ -22,32 +21,22 @@ class SubbedEvents extends Component {
     render() {
       const { user } = this.props;
       const { eventIsLive } = this.state;
-      const settings = {
-        className: 'center',
-        centerMode: true,
-        infinite: true,
-        centerPadding: '60px',
-        slidesToShow: 3,
-        speed: 500,
-        arrows: true,
-        adaptiveHeight: true
-      };
+
       return (
 
 
-        <div className="mr-5 ml-5">
-          <OwlCarousel
-            className="owl-theme"
-            loop
-            margin={10}
-            items={4}
-            nav
+        <div className="mr-5 ml-5 netflix">
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={4}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            navigation
           >
-
             {
               user.conferences.map((event, key) =>
-                <div className="item">
-                  <Col lg="12" key={key} className="mt-4 pt-2">
+                <SwiperSlide key={key}>
+                  <Col lg="12"  className="mt-4 pt-2">
                     <div className="blog position-relative overflow-hidden shadow rounded">
                       <div className="position-relative">
                         <img src={event.Photos[0].url} className="img-fluid rounded-top" alt="" />
@@ -69,11 +58,10 @@ class SubbedEvents extends Component {
                       </div>
                     </div>
                   </Col>
-                </div>
+                </SwiperSlide>
               )
-            }
-     
-          </OwlCarousel>
+            }     
+          </Swiper>
         </div>
 
       );
