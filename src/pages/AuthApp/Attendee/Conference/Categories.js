@@ -45,7 +45,7 @@ class SubbedEvents extends Component {
                 <Col lg="12" key={key} className="mt-4 pt-2">
                   <div className="blog position-relative overflow-hidden shadow rounded">
                     <div className="position-relative">
-                      <img src={event.Photos[0].url} className="img-fluid rounded-top" style={{ height: '700px'}} alt="" />
+                      <img src={event.Photos[0].url} className="img-fluid rounded-top" alt="" />
                       <div className="overlay rounded-top bg-dark"></div>
                     </div>
                     <div className="content p-4">
