@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, UncontrolledTooltip, Progress, PaginationItem, PaginationLink, Pagination } from 'reactstrap';
 import { connect } from 'react-redux';
 
-import SubbedEvents from './SubbedConference';
+import SubbedEvents from './SubbedEvents';
 
 //Import Images
 import imgbg from '../../../../images/account/bg.jpg';
@@ -104,7 +104,7 @@ class AttendeeEvents extends Component {
               <Col lg="12">
                 <div className="public-profile position-relative p-4 bg-white overflow-hidden rounded shadow" style={{ zIndex: '1' }}>
                   <Row className="align-items-center">
-                    <Col lg="6" md="9">
+                    <Col lg="10" md="9">
                       <Row className="align-items-center">
                         <Col md="7" className="text-md-left text-center mt-4 mt-sm-0">
                           <h3 className="title mb-0">Conferences</h3>
@@ -120,25 +120,16 @@ class AttendeeEvents extends Component {
 
 
         <section className="section mt-60">
- 
-          <Row>
-            <Col lg="8" md="7" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
-              <div className="ml-lg-3">
-                <h5 className="mt-4 mb-0">Subscribed Conferences :</h5>
-                <SubbedEvents user={user} />
-              </div>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col lg="8" md="7" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
-              <div className="ml-lg-3">
-                <h5 className="mt-4 mb-0">Featured :</h5>
-                <SubbedEvents user={user} />
-              </div>
-            </Col>
-          </Row>
-     
+          <Container className="mt-lg-3">
+            <Row>
+              <Col lg="8" md="7" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
+                <div className="ml-lg-3">
+                  <h5 className="mt-4 mb-0">Subscribed Conferences :</h5>
+                  <SubbedEvents user={user} />
+                </div>
+              </Col>
+            </Row>
+          </Container>
         </section>
       </React.Fragment>
     );

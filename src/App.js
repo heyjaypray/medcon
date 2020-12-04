@@ -2,9 +2,9 @@ import React, { Component, Suspense, Fragment } from 'react';
 import Layout from './components/Layout/';
 import { Route, Redirect, Switch, BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getConferences, getCourses } from './redux/main/actions'
-import { getUser } from './redux/user/actions'
-import Cookies from 'js-cookie'
+import { getConferences, getCourses } from './redux/main/actions';
+import { getUser } from './redux/user/actions';
+import Cookies from 'js-cookie';
 
 // Import Css
 import './Apps.scss';
@@ -21,15 +21,15 @@ function withLayout(WrappedComponent) {
   // ...and returns another component...
   return class extends React.Component {
     render() {
-      console.log(this.props)
-      const { sidebar } = this.props
+      console.log(this.props);
+      const { sidebar } = this.props;
       return (
         <Fragment>
           <Layout sidebar={sidebar}>
             <WrappedComponent {...this.props} />
           </Layout>
         </Fragment>
-      )
+      );
     }
   };
 }
@@ -42,33 +42,33 @@ const AuthRoute = ({ component: Component, authUser, sidebar, ...rest }) => {
         authUser ? (
           <Component {...props} authUser={authUser} sidebar={sidebar} />
         ) : (
-            <Redirect
-              to={{
-                pathname: '/login',
-                state: { from: props.location }
-              }}
-            />
-          )
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: { from: props.location }
+            }}
+          />
+        )
       }
     />
   );
-}
+};
 
 class App extends Component {
 
 
   cookies = () => {
-    const cookie = Cookies.get("jwt");
-    const id = Cookies.get("id");
+    const cookie = Cookies.get('jwt');
+    const id = Cookies.get('id');
     if (cookie) {
-      this.props.getUser(id, cookie)
+      this.props.getUser(id, cookie);
     }
   }
 
   componentDidMount() {
-    this.props.getConferences(3)
-    this.props.getCourses(3)
-    this.cookies()
+    this.props.getConferences(3);
+    this.props.getCourses(3);
+    this.cookies();
   }
 
   Loader = () => {
@@ -122,8 +122,8 @@ class App extends Component {
 }
 
 const mapStateToProps = ({ main, users }) => {
-  const { conferences } = main
-  const { loggedIn } = users
+  const { conferences } = main;
+  const { loggedIn } = users;
   return { conferences, loggedIn };
 };
 const mapActionsToProps = {

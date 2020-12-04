@@ -1,56 +1,57 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import { Container, Row, Col, UncontrolledTooltip, Progress } from "reactstrap";
-import { connect } from 'react-redux'
-import SubbedEvents from '../Conference/SubbedEvents'
+import { Link } from 'react-router-dom';
+import { Container, Row, Col, UncontrolledTooltip, Progress } from 'reactstrap';
+import { connect } from 'react-redux';
+import SubbedConferences from './SubbedConference';
+import SubbedCourses from '../Courses/SubbedCourses';
 
 //Import Images
-import imgbg from "../../../../images/account/bg.jpg";
-import blog1 from "../../../../images/blog/01.jpg";
-import blog2 from "../../../../images/blog/02.jpg";
-import exp1 from "../../../../images/job/Circleci.svg";
-import exp2 from "../../../../images/job/Codepen.svg";
-import exp3 from "../../../../images/job/Gitlab.svg";
-import client1 from "../../../../images/client/01.jpg";
-import client2 from "../../../../images/client/02.jpg";
-import client3 from "../../../../images/client/03.jpg";
-import client4 from "../../../../images/client/04.jpg";
-import client5 from "../../../../images/client/05.jpg";
-import client6 from "../../../../images/client/06.jpg";
-import client7 from "../../../../images/client/07.jpg";
-import client8 from "../../../../images/client/08.jpg";
+import imgbg from '../../../../images/account/bg.jpg';
+import blog1 from '../../../../images/blog/01.jpg';
+import blog2 from '../../../../images/blog/02.jpg';
+import exp1 from '../../../../images/job/Circleci.svg';
+import exp2 from '../../../../images/job/Codepen.svg';
+import exp3 from '../../../../images/job/Gitlab.svg';
+import client1 from '../../../../images/client/01.jpg';
+import client2 from '../../../../images/client/02.jpg';
+import client3 from '../../../../images/client/03.jpg';
+import client4 from '../../../../images/client/04.jpg';
+import client5 from '../../../../images/client/05.jpg';
+import client6 from '../../../../images/client/06.jpg';
+import client7 from '../../../../images/client/07.jpg';
+import client8 from '../../../../images/client/08.jpg';
 
 class PageProfile extends Component {
   state = {
     blogs: [
-      { id: 1, title: "Design your apps in your own way", image: blog1, likes: "33", blogComments: "08", author: "Krishta Joseph", date: "13th August, 2019" },
-      { id: 2, title: "How apps is changing the IT world", image: blog2, likes: "33", blogComments: "08", author: "Krishta Joseph", date: "13th August, 2019" }
+      { id: 1, title: 'Design your apps in your own way', image: blog1, likes: '33', blogComments: '08', author: 'Krishta Joseph', date: '13th August, 2019' },
+      { id: 2, title: 'How apps is changing the IT world', image: blog2, likes: '33', blogComments: '08', author: 'Krishta Joseph', date: '13th August, 2019' }
     ],
     experiences: [
-      { id: 1, image: exp1, designation: "Senior Web Developer", duration: "3 Years", companyName: "", location: "London, UK" },
-      { id: 2, image: exp2, designation: "Web Designer", duration: "2 Years", companyName: "CircleCi", location: "Washington D.C, USA" },
-      { id: 3, image: exp3, designation: "UI Designer", duration: "2 Years", companyName: "Codepen", location: "Perth, Australia" },
+      { id: 1, image: exp1, designation: 'Senior Web Developer', duration: '3 Years', companyName: '', location: 'London, UK' },
+      { id: 2, image: exp2, designation: 'Web Designer', duration: '2 Years', companyName: 'CircleCi', location: 'Washington D.C, USA' },
+      { id: 3, image: exp3, designation: 'UI Designer', duration: '2 Years', companyName: 'Codepen', location: 'Perth, Australia' },
     ],
     clients: [
-      { id: 1, image: client1, name: "Calvin" },
-      { id: 2, image: client2, name: "Meriam" },
-      { id: 3, image: client3, name: "Janelia" },
-      { id: 4, image: client4, name: "Cristino" },
-      { id: 5, image: client5, name: "Rukshar" },
-      { id: 6, image: client6, name: "Rambo" },
-      { id: 7, image: client7, name: "Beardo" },
-      { id: 8, image: client8, name: "Gogo" },
+      { id: 1, image: client1, name: 'Calvin' },
+      { id: 2, image: client2, name: 'Meriam' },
+      { id: 3, image: client3, name: 'Janelia' },
+      { id: 4, image: client4, name: 'Cristino' },
+      { id: 5, image: client5, name: 'Rukshar' },
+      { id: 6, image: client6, name: 'Rambo' },
+      { id: 7, image: client7, name: 'Beardo' },
+      { id: 8, image: client8, name: 'Gogo' },
     ]
   }
 
   componentDidMount() {
-    document.body.classList = "";
+    document.body.classList = '';
     document.getElementById('topnav').classList.add('bg-white');
-    window.addEventListener("scroll", this.scrollNavigation, true);
+    window.addEventListener('scroll', this.scrollNavigation, true);
   }
   // Make sure to remove the DOM listener when the component is unmounted.
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.scrollNavigation, true);
+    window.removeEventListener('scroll', this.scrollNavigation, true);
   }
 
   scrollNavigation = () => {
@@ -72,7 +73,7 @@ class PageProfile extends Component {
           <Container>
             <Row>
               <Col lg="12">
-                <div className="public-profile position-relative p-4 bg-white overflow-hidden rounded shadow" style={{ zIndex: "1" }}>
+                <div className="public-profile position-relative p-4 bg-white overflow-hidden rounded shadow" style={{ zIndex: '1' }}>
                   <Row className="align-items-center">
                     <Col lg="2" md="3" className="text-md-left text-center">
                       <img src={user.Media ? user.Media.url : 'https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg'} className="avatar avatar-medium rounded-pill shadow d-block mx-auto" alt="" />
@@ -119,8 +120,8 @@ class PageProfile extends Component {
                       {
                         this.state.clients.map((client, key) =>
                           <Link to="#" key={key}>
-                            <img src={client.image} className="avatar avatar-small rounded-pill mt-3 ml-1" id={"client" + client.id} alt="" />
-                            <UncontrolledTooltip placement="top" target={"client" + client.id}>
+                            <img src={client.image} className="avatar avatar-small rounded-pill mt-3 ml-1" id={'client' + client.id} alt="" />
+                            <UncontrolledTooltip placement="top" target={'client' + client.id}>
                               {client.name}
                             </UncontrolledTooltip>
                           </Link>
@@ -168,7 +169,7 @@ class PageProfile extends Component {
                   </div>
 
                   <h5 className="mt-4 mb-0">Subscribed Conferences :</h5>
-                 <SubbedEvents user={user} />
+                  <SubbedConferences user={user} />
                 </div>
               </Col>
             </Row>

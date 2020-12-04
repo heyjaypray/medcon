@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, UncontrolledTooltip, Progress, PaginationItem, PaginationLink, Pagination } from "reactstrap";
 import { connect } from 'react-redux'
 
-import SubbedEvents from '../../Account/SubbedConference'
+import SubbedEvents from '../SubbedEvents'
 import Sidebar from '../../../../../components/Layout/Sidebar'
 import Banner from '../../../../Conferences/Banner'
 
