@@ -3714,5 +3714,7 @@ p {
   border-top: 1px solid #3d4349;
 }
 
-
+.slick-next {
+  right: 25px;
+}
 /*# sourceMappingURL=style.css.map */

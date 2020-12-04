@@ -73,7 +73,7 @@ const ForgotPassword = React.lazy(() => import('./pages/User/ForgotPassword'));
 
 //Attendee Account
 const AttendeeAccount = React.lazy(() => import('./pages/AuthApp/Attendee/Account/Profile'));
-const AttendeeEvents = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/EventList'));
+const AttendeeEvents = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/Conferences'));
 const AttendeeSelectedEvent = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/SelectedEvent/Index'));
 const AttendeeEventSessions = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/SelectedEvent/Sessions/Index'));
 
