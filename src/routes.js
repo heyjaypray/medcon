@@ -73,9 +73,15 @@ const ForgotPassword = React.lazy(() => import('./pages/User/ForgotPassword'));
 
 //Attendee Account
 const AttendeeAccount = React.lazy(() => import('./pages/AuthApp/Attendee/Account/Profile'));
-const AttendeeEvents = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/Conferences'));
-const AttendeeSelectedEvent = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/SelectedEvent/Index'));
-const AttendeeEventSessions = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/SelectedEvent/Sessions/Index'));
+const UserConferences = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/Conferences'));
+const UserSelectedConference = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/SelectedEvent/Index'));
+const UserConferenceSessions = React.lazy(() => import('./pages/AuthApp/Attendee/Conference/SelectedEvent/Sessions/Index'));
+
+const UserCourses = React.lazy(() => import('./pages/AuthApp/Attendee/Courses/Courses'));
+const UserSelectedCourse = React.lazy(() => import('./pages/AuthApp/Attendee/Courses/SelectedEvent/Index'));
+const UserCourseSessions = React.lazy(() => import('./pages/AuthApp/Attendee/Courses/SelectedEvent/Sessions/Index'));
+
+
 
 
 
@@ -102,9 +108,13 @@ const routes = [
 
 
   { path: '/account', component: AttendeeAccount, auth: true },
-  { path: '/account/conferences', component: AttendeeEvents, auth: true },
-  { path: '/account/conference/:id', component: AttendeeSelectedEvent, auth: true, sidebar: true  },
-  { path: '/account/conference/:id/sessions', component: AttendeeEventSessions, auth: true, sidebar: true  },
+  { path: '/account/conferences', component: UserConferences, auth: true },
+  { path: '/account/conferences/:id', component: UserSelectedConference, auth: true, sidebar: true  },
+  { path: '/account/conferences/:id/sessions', component: UserConferenceSessions, auth: true, sidebar: true  },
+
+  { path: '/account/courses', component: UserCourses, auth: true },
+  { path: '/account/courses/:id', component: UserSelectedCourse, auth: true, sidebar: true  },
+  { path: '/account/courses/:id/sessions', component: UserCourseSessions, auth: true, sidebar: true  },
 
 
 

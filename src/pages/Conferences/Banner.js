@@ -82,18 +82,18 @@ class Section extends Component {
             <div className="position-relative">
               <div className="shape overflow-hidden text-footer">
                 <div className="text-center bg-white p-4">
-                  <h5 className="text-dark mb-0">Brought to you by {event.organizer.Name}</h5>
+                  <h5 className="text-dark mb-0">Brought to you by {event.organizer ? event.organizer.Name : 'MedCon'}</h5>
                 </div>
               </div>
             </div>
 
           </Parallax>
         </React.Fragment>
-      )
+      );
     } else {
       return (
         <div />
-      )
+      );
     }
 
   }

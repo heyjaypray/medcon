@@ -72,7 +72,7 @@ function Sidebar(props) {
       {/* <Divider /> */}
       <List>
         {['Sessions', 'Speakers', 'Vendors', 'Chat'].map((text, index) => (
-          <ListItem button key={text} style={{
+          <ListItem button key={index} style={{
             paddingTop: 20,
             paddingBottom: 20,
             marginTop: 50

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, UncontrolledTooltip, Progress, PaginationItem, PaginationLink, Pagination } from 'reactstrap';
 import { connect } from 'react-redux';
 
-import SubbedEvents from './Categories';
+import Categories from '../Components/Categories';
 
 //Import Images
 import imgbg from '../../../../images/account/bg.jpg';
@@ -124,8 +124,7 @@ class AttendeeEvents extends Component {
           <Row>
             <Col lg="12" md="12" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
               <div className="ml-lg-3">
-                <h5 className="mt-4 mb-0">Subscribed Conferences :</h5>
-                <SubbedEvents user={user} />
+                <Categories item={user.conferences} category="Subscribed" link='conferences' />
               </div>
             </Col>
           </Row>
@@ -133,8 +132,7 @@ class AttendeeEvents extends Component {
           <Row>
             <Col lg="12" md="12" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
               <div className="ml-lg-3">
-                <h5 className="mt-4 mb-0">Featured :</h5>
-                <SubbedEvents user={user} />
+                <Categories item={user.conferences} category="Featured" />
               </div>
             </Col>
           </Row>

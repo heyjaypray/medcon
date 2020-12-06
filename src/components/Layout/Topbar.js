@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from "react-router";
-import { Container } from "reactstrap";
-import { connect } from 'react-redux'
-import { compose } from 'redux'
-import { logout } from '../../redux/user/actions'
+import { withRouter } from 'react-router';
+import { Container } from 'reactstrap';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { logout } from '../../redux/user/actions';
 
 class Topbar extends Component {
 
@@ -13,18 +13,18 @@ class Topbar extends Component {
     this.state = {
       isOpen: false,
       navLinks: [
-        { id: 1, title: "Home", link: "/" },
-        { id: 2, title: "Conferences", link: "/" },
-        { id: 3, title: "Courses", link: "/" },
-        { id: 4, title: "Webinars", link: "/" },
-        { id: 5, title: "Account", link: "/account" }
+        { id: 1, title: 'Home', link: '/' },
+        { id: 2, title: 'Conferences', link: '/' },
+        { id: 3, title: 'Courses', link: '/' },
+        { id: 4, title: 'Webinars', link: '/' },
+        { id: 5, title: 'Account', link: '/account' }
       ],
       authNavlinks: [
-        { id: 1, title: "Account", link: "/account" },
-        { id: 2, title: "Conferences", link: "/account/conferences" },
-        { id: 3, title: "Courses", link: "/account" },
-        { id: 4, title: "Webinars", link: "/account" },
-        { id: 4, title: "Connections", link: "/account" },
+        { id: 1, title: 'Account', link: '/account' },
+        { id: 2, title: 'Conferences', link: '/account/conferences' },
+        { id: 3, title: 'Courses', link: '/account/courses' },
+        { id: 4, title: 'Webinars', link: '/account' },
+        { id: 4, title: 'Connections', link: '/account' },
       ],
     };
     this.toggleLine = this.toggleLine.bind(this);
@@ -38,8 +38,8 @@ class Topbar extends Component {
 
   componentDidMount() {
     var matchingMenuItem = null;
-    var ul = document.getElementById("top-menu");
-    var items = ul.getElementsByTagName("a");
+    var ul = document.getElementById('top-menu');
+    var items = ul.getElementsByTagName('a');
     for (var i = 0; i < items.length; ++i) {
       if (this.props.location.pathname === items[i].pathname) {
         matchingMenuItem = items[i];
@@ -95,19 +95,19 @@ class Topbar extends Component {
         :
         false
 
-    )
+    );
     this.setState({ navLinks: tmpLinks });
   }
 
 
   logout = () => {
     const { logout, history } = this.props;
-    logout(history)
+    logout(history);
   }
 
   render() {
     const { user, history } = this.props;
-    console.log('user', user)
+    console.log('user', user);
     return (
       <React.Fragment>
         <header id="topnav" className="defaultscroll sticky">
@@ -133,7 +133,7 @@ class Topbar extends Component {
 
             <div className="menu-extras">
               <div className="menu-item">
-                <Link to="#" onClick={this.toggleLine} className={this.state.isOpen ? "navbar-toggle open" : "navbar-toggle"} >
+                <Link to="#" onClick={this.toggleLine} className={this.state.isOpen ? 'navbar-toggle open' : 'navbar-toggle'} >
                   <div className="lines">
                     <span></span>
                     <span></span>
@@ -143,19 +143,19 @@ class Topbar extends Component {
               </div>
             </div>
 
-            <div id="navigation" style={{ display: this.state.isOpen ? "block" : "none" }}>
+            <div id="navigation" style={{ display: this.state.isOpen ? 'block' : 'none' }}>
               <ul className="navigation-menu" id="top-menu">
                 { user ? 
                   this.state.authNavlinks.map((navLink, key) =>
                     navLink.child || navLink.child2 ?
                       <li className="has-submenu" key={key}>
                         {/* child item(menu Item) - Level 1 */}
-                        <Link to={navLink.link} onClick={(event) => { event.preventDefault(); this.openBlock(navLink.id) }} >{navLink.title}</Link>
+                        <Link to={navLink.link} onClick={(event) => { event.preventDefault(); this.openBlock(navLink.id); }} >{navLink.title}</Link>
                         <span className="menu-arrow"></span>
                         {
                           navLink.isMegaMenu ?
                             // if menu is mega menu(2 columns grid)
-                            <ul className={navLink.isOpenSubMenu ? "submenu megamenu open" : "submenu megamenu"}  >
+                            <ul className={navLink.isOpenSubMenu ? 'submenu megamenu open' : 'submenu megamenu'}  >
                               <li>
                                 <ul>
                                   {
@@ -181,19 +181,19 @@ class Topbar extends Component {
                             </ul>
                             :
                             // if menu is not mega menu(1grid)
-                            <ul className={navLink.isOpenSubMenu ? "submenu open" : "submenu"}  >
+                            <ul className={navLink.isOpenSubMenu ? 'submenu open' : 'submenu'}  >
                               {
                                 navLink.child.map((childArray, childKey) =>
                                   childArray.nestedChild ?
                                     // sub menu item - Level 2
                                     <li className="has-submenu" key={childKey}>
-                                      <Link to={childArray.link} onClick={(event) => { event.preventDefault(); this.openNestedBlock(navLink.id, childArray.id) }}> {childArray.title}{" "}{childArray.isAdded ? <span className="badge badge-primary rounded">Added</span> : null}</Link>
+                                      <Link to={childArray.link} onClick={(event) => { event.preventDefault(); this.openNestedBlock(navLink.id, childArray.id); }}> {childArray.title}{' '}{childArray.isAdded ? <span className="badge badge-primary rounded">Added</span> : null}</Link>
                                       <span className="submenu-arrow"></span>
-                                      <ul className={childArray.isOpenNestedSubMenu ? "submenu open" : "submenu"}>
+                                      <ul className={childArray.isOpenNestedSubMenu ? 'submenu open' : 'submenu'}>
                                         {
                                           childArray.nestedChild.map((nestedChildArray, nestedKey) =>
                                             // nested sub menu item - Level 3
-                                            <li key={nestedKey}><Link to={nestedChildArray.link}>{nestedChildArray.title}{" "}{nestedChildArray.isAdded ? <span className="badge badge-primary rounded">Added</span> : null}</Link></li>
+                                            <li key={nestedKey}><Link to={nestedChildArray.link}>{nestedChildArray.title}{' '}{nestedChildArray.isAdded ? <span className="badge badge-primary rounded">Added</span> : null}</Link></li>
                                           )
                                         }
                                       </ul>
@@ -213,12 +213,12 @@ class Topbar extends Component {
                     navLink.child || navLink.child2 ?
                       <li className="has-submenu" key={key}>
                         {/* child item(menu Item) - Level 1 */}
-                        <Link to={navLink.link} onClick={(event) => { event.preventDefault(); this.openBlock(navLink.id) }} >{navLink.title}</Link>
+                        <Link to={navLink.link} onClick={(event) => { event.preventDefault(); this.openBlock(navLink.id); }} >{navLink.title}</Link>
                         <span className="menu-arrow"></span>
                         {
                           navLink.isMegaMenu ?
                             // if menu is mega menu(2 columns grid)
-                            <ul className={navLink.isOpenSubMenu ? "submenu megamenu open" : "submenu megamenu"}  >
+                            <ul className={navLink.isOpenSubMenu ? 'submenu megamenu open' : 'submenu megamenu'}  >
                               <li>
                                 <ul>
                                   {
@@ -244,19 +244,19 @@ class Topbar extends Component {
                             </ul>
                             :
                             // if menu is not mega menu(1grid)
-                            <ul className={navLink.isOpenSubMenu ? "submenu open" : "submenu"}  >
+                            <ul className={navLink.isOpenSubMenu ? 'submenu open' : 'submenu'}  >
                               {
                                 navLink.child.map((childArray, childKey) =>
                                   childArray.nestedChild ?
                                     // sub menu item - Level 2
                                     <li className="has-submenu" key={childKey}>
-                                      <Link to={childArray.link} onClick={(event) => { event.preventDefault(); this.openNestedBlock(navLink.id, childArray.id) }}> {childArray.title}{" "}{childArray.isAdded ? <span className="badge badge-primary rounded">Added</span> : null}</Link>
+                                      <Link to={childArray.link} onClick={(event) => { event.preventDefault(); this.openNestedBlock(navLink.id, childArray.id); }}> {childArray.title}{' '}{childArray.isAdded ? <span className="badge badge-primary rounded">Added</span> : null}</Link>
                                       <span className="submenu-arrow"></span>
-                                      <ul className={childArray.isOpenNestedSubMenu ? "submenu open" : "submenu"}>
+                                      <ul className={childArray.isOpenNestedSubMenu ? 'submenu open' : 'submenu'}>
                                         {
                                           childArray.nestedChild.map((nestedChildArray, nestedKey) =>
                                             // nested sub menu item - Level 3
-                                            <li key={nestedKey}><Link to={nestedChildArray.link}>{nestedChildArray.title}{" "}{nestedChildArray.isAdded ? <span className="badge badge-primary rounded">Added</span> : null}</Link></li>
+                                            <li key={nestedKey}><Link to={nestedChildArray.link}>{nestedChildArray.title}{' '}{nestedChildArray.isAdded ? <span className="badge badge-primary rounded">Added</span> : null}</Link></li>
                                           )
                                         }
                                       </ul>

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, UncontrolledTooltip, Progress } from 'reactstrap';
 import { connect } from 'react-redux';
 import SubbedConferences from './SubbedConference';
-import SubbedCourses from '../Courses/SubbedCourses';
 
 //Import Images
 import imgbg from '../../../../images/account/bg.jpg';

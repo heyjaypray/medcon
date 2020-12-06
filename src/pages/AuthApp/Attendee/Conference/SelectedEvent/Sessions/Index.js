@@ -5,19 +5,19 @@ import { Container, Row, Col } from 'reactstrap';
 import { Parallax } from 'react-parallax';
 import moment from 'moment';
 
-import Sidebar from '../../../../../../components/Layout/Sidebar'
+import Sidebar from '../../../../../../components/Layout/Sidebar';
 
 
 class Section extends Component {
 
   componentDidMount() {
-    document.body.classList = "";
+    document.body.classList = '';
     document.getElementById('topnav').classList.add('bg-white');
-    window.addEventListener("scroll", this.scrollNavigation, true);
+    window.addEventListener('scroll', this.scrollNavigation, true);
   }
   // Make sure to remove the DOM listener when the component is unmounted.
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.scrollNavigation, true);
+    window.removeEventListener('scroll', this.scrollNavigation, true);
   }
 
   scrollNavigation = () => {
@@ -51,7 +51,7 @@ class Section extends Component {
           </Container>
         </section>
       </React.Fragment>
-    )
+    );
   }
 }
 
