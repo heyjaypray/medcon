@@ -113,7 +113,7 @@ const routes = [
   { path: '/account/conferences/:id/sessions', component: UserConferenceSessions, auth: true, sidebar: true  },
 
   { path: '/account/courses', component: UserCourses, auth: true },
-  { path: '/account/courses/:id', component: UserSelectedCourse, auth: true, sidebar: true  },
+  { path: '/account/courses/:id', component: UserSelectedCourse, auth: true, sidebar: false  },
   { path: '/account/courses/:id/sessions', component: UserCourseSessions, auth: true, sidebar: true  },
 
 
