@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import Banner from '../../../../Conferences/Banner';
+import ReactJWPlayer from 'react-jw-player';
 
 
 // import BlogBox from "../../../../components/Shared/blog-box";
@@ -53,7 +54,11 @@ class LiveEvent extends Component {
 
             <Row className='align-items-center'>
               <Col lg="12" md="9">
-                <Banner event={course} />
+                <ReactJWPlayer
+                  playerId='vWNdCs80'
+                  playerScript='https://cdn.jwplayer.com/libraries/vWNdCs80.js'
+                  file='https://cdn.jwplayer.com/videos/eLvtfp5m-rw5vNhWd.mp4'
+                />
               </Col>
             </Row>
 
