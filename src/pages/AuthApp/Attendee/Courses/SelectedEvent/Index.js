@@ -54,11 +54,11 @@ class LiveEvent extends Component {
           {/* <Sidebar /> */}
           <section>
 
-            <Row >
-              <Col lg="9" md="9" className="mt-5 ml-1">
+            <Row className="mt-5" >
+              <Col lg="9" md="9" className="mt-5 mb-2 ml-1">
                 <VideoPlayer />
               </Col>
-              <Col>
+              <Col className="mr-2 mt-5">
                 <Playlist />
               </Col>
             </Row>
