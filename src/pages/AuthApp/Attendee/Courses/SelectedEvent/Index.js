@@ -4,6 +4,8 @@ import { Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import Banner from '../../../../Conferences/Banner';
 import ReactJWPlayer from 'react-jw-player';
+import Playlist from './Components/Playlist';
+import VideoPlayer from './Components/Video';
 
 
 // import BlogBox from "../../../../components/Shared/blog-box";
@@ -52,13 +54,12 @@ class LiveEvent extends Component {
           {/* <Sidebar /> */}
           <section>
 
-            <Row className='align-items-center'>
-              <Col lg="12" md="9">
-                <ReactJWPlayer
-                  playerId='vWNdCs80'
-                  playerScript='https://cdn.jwplayer.com/libraries/vWNdCs80.js'
-                  file='https://cdn.jwplayer.com/videos/eLvtfp5m-rw5vNhWd.mp4'
-                />
+            <Row >
+              <Col lg="9" md="9" className="mt-5 ml-1">
+                <VideoPlayer />
+              </Col>
+              <Col>
+                <Playlist />
               </Col>
             </Row>
 
