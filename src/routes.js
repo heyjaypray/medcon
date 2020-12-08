@@ -79,7 +79,6 @@ const UserConferenceSessions = React.lazy(() => import('./pages/AuthApp/Attendee
 
 const UserCourses = React.lazy(() => import('./pages/AuthApp/Attendee/Courses/Courses'));
 const UserSelectedCourse = React.lazy(() => import('./pages/AuthApp/Attendee/Courses/SelectedEvent/Index'));
-const UserCourseSessions = React.lazy(() => import('./pages/AuthApp/Attendee/Courses/SelectedEvent/Sessions/Index'));
 
 
 
@@ -114,7 +113,6 @@ const routes = [
 
   { path: '/account/courses', component: UserCourses, auth: true },
   { path: '/account/courses/:id', component: UserSelectedCourse, auth: true, sidebar: false  },
-  { path: '/account/courses/:id/sessions', component: UserCourseSessions, auth: true, sidebar: true  },
 
 
 

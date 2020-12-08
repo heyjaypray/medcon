@@ -6,6 +6,7 @@ import Banner from '../../../../Conferences/Banner';
 import ReactJWPlayer from 'react-jw-player';
 import Playlist from './Components/Playlist';
 import VideoPlayer from './Components/Video';
+import AboutPage from './Components/About';
 
 
 // import BlogBox from "../../../../components/Shared/blog-box";
@@ -55,11 +56,16 @@ class LiveEvent extends Component {
           <section>
 
             <Row className="mt-5" >
-              <Col lg="9" md="9" className="mt-5 mb-2 ml-1">
-                <VideoPlayer />
+              <Col lg="9" md="12" sm="12" className="mt-5 ml-2">
+                <VideoPlayer course={course} />
               </Col>
               <Col className="mr-2 mt-5">
-                <Playlist />
+                <Playlist course={course} />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <AboutPage course={course} />
               </Col>
             </Row>
 

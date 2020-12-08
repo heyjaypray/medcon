@@ -1,14 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import PlaylistCard from './PlaylistCard';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%'
+    width: '100%',
+    height: '1070px',
+    marginTop: '10%'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -16,56 +17,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Playlist() {
+export default function Playlist(props) {
+    
+  console.log('props', props);
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>Module 1</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography className={classes.heading}>Module 2</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography className={classes.heading}>Module 3</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-    </div>
+    <Card className={classes.root}>
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="h2">
+            Lesson Modules
+        </Typography>
+        <p>75% Completed</p>
+        {props.course && props.course.Modules && props.course.Modules.map((i, index) => {
+          return <PlaylistCard module={i} index={index} />;
+        })}
+      </CardContent>
+    </Card>
   );
 }
