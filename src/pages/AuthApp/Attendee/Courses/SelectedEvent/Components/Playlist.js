@@ -30,7 +30,7 @@ export default function Playlist(props) {
         </Typography>
         <p>75% Completed</p>
         {props.course && props.course.Modules && props.course.Modules.map((i, index) => {
-          return <PlaylistCard module={i} index={index} />;
+          return <PlaylistCard module={i} index={index} id={props.id} />;
         })}
       </CardContent>
     </Card>

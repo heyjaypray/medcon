@@ -9,7 +9,7 @@ import VideoPlayer from './Components/Video';
 import AboutPage from './Components/About';
 import axios from 'axios';
 import db_url from '../../../../../redux/db_url';
-import { selectVideo } from '../../../../../redux/main/actions';
+import { selectVideo, selectCourse } from '../../../../../redux/main/actions';
 
 // import BlogBox from "../../../../components/Shared/blog-box";
 
@@ -19,22 +19,15 @@ class LiveEvent extends Component {
     }
 
     componentDidMount = async () => {
-      const { courses, selectVideo } = this.props;
+      const { course, selectVideo, selectCourse, user } = this.props;
 
       document.body.classList = '';
       document.getElementById('topnav').classList.add('bg-white');
       window.addEventListener('scroll', this.scrollNavigation, true);
 
       const { id } = this.props.match.params;
-      axios.get(`${db_url}/courses/${id}`)
-        .then(res => {
-          const course = res.data;
-          this.setState({ course });
-        }).then(() => {
-          const a = this.state.course.Modules[0].playlist.playlist[0];
-          //   const d = this.state.course && this.state.course.Modules && this.state.course.Modules[0] && this.state.course.Modules[0].playlist && this.state.course.Modules[0].playlist.playlist.sources[0].file;
-          selectVideo(a);
-        });
+      this.setState({ course: user.courses.find(s => s.id == id) });
+      selectCourse(id);
     }
     // Make sure to remove the DOM listener when the component is unmounted.
     componentWillUnmount() {
@@ -87,11 +80,12 @@ class LiveEvent extends Component {
 
 const mapStateToProps = ({ users, main }) => {
   const { user } = users;
-  const { courses } = main;
-  return { user, courses };
+  const { courses, course } = main;
+  return { user, courses, course };
 };
 const mapActionsToProps = {
-  selectVideo
+  selectVideo,
+  selectCourse
 };
 
 export default connect(

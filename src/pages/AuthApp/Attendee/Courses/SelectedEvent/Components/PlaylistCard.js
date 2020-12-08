@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import axios from 'axios';
+import db_url from '../../../../../../redux/db_url';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +26,23 @@ export default function PlaylistCard(props) {
 
   const { module, index } = props;
 
+  const [playlist, setPlaylist] = useState(null);
+
+  const playlist_id = module.playlist_id;
+
+  useEffect(() => {
+    console.log(playlist_id);
+    if(playlist_id){
+      axios.get(`https://cdn.jwplayer.com/v2/playlists/${playlist_id}`)
+        .then(res => {
+          const course = res.data;
+          setPlaylist(course);
+        });
+    };
+  },[playlist_id]);
+
+
+  console.log({ playlist });
   return (
     <div className={classes.root}>
       <Accordion defaultExpanded={index === 0 ? true : false}>
@@ -34,7 +53,7 @@ export default function PlaylistCard(props) {
         >
           <Typography className={classes.heading}>{module.Title}</Typography>
         </AccordionSummary>
-        {module.playlist && module.playlist.playlist && module.playlist.playlist.map((i,index) => {
+        {playlist && playlist.playlist && playlist.playlist.map((i,index) => {
           return (
             <AccordionDetails>
               <FormControlLabel

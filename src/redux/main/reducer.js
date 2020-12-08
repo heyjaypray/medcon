@@ -1,13 +1,15 @@
 import {
   GET_CONFERENCES,
   GET_COURSES,
-  SELECT_VIDEO
+  SELECT_VIDEO,
+  SELECT_COURSE
 } from './actions';
   
 const initialState = {
   conferences: [],
   courses: [],
-  courseVideo: null
+  courseVideo: null,
+  course: null
 };
   
 export default function (state = initialState, action) {
@@ -27,6 +29,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         courseVideo: data
+      };  
+    case SELECT_COURSE:
+      return {
+        ...state,
+        course: data
       };  
     default:
       return {
