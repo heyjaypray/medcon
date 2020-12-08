@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    height: '1070px',
+    height: '100%',
     marginTop: '10%'
   },
   heading: {

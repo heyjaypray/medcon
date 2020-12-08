@@ -34,7 +34,7 @@ export default function PlaylistCard(props) {
         >
           <Typography className={classes.heading}>{module.Title}</Typography>
         </AccordionSummary>
-        {module.Videos && module.Videos.map((i,index) => {
+        {module.playlist && module.playlist.playlist && module.playlist.playlist.map((i,index) => {
           return (
             <AccordionDetails>
               <FormControlLabel
@@ -42,7 +42,7 @@ export default function PlaylistCard(props) {
                 onClick={(event) => event.stopPropagation()}
                 onFocus={(event) => event.stopPropagation()}
                 control={<Checkbox />}
-                label={`Lesson # ${index+1}`}
+                label={i.title}
               />
             </AccordionDetails>
           );
