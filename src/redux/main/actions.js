@@ -7,6 +7,7 @@ export const GET_CONFERENCES = 'GET_CONFERENCES';
 export const GET_COURSES = 'GET_COURSES';
 export const SELECT_VIDEO = 'SELECT_VIDEO';
 export const SELECT_COURSE = 'SELECT_COURSE';
+export const ADD_COURSE_TO_USER = 'ADD_COURSE_TO_USER';
 
 export function getConferences(amt) {
   return async function (dispatch) {
@@ -55,3 +56,5 @@ export function selectVideo(id, videoObj, obj) {
     });
   };
 }
+
+

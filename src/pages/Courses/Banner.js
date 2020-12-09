@@ -5,36 +5,6 @@ import { Container, Row, Col } from 'reactstrap';
 import { Parallax } from 'react-parallax';
 import moment from 'moment';
 
-//CountDown
-// import Countdown from 'react-countdown-now';
-
-// Random component
-// const Completionist = () => <span>You are good to go!</span>;
-
-// Renderer callback with condition
-// const renderer = ({ hours, minutes, seconds, completed }) => {
-//     if (completed) {
-//         // Render a complete state
-//         return <Completionist />;
-//     } else {
-//         // Render a countdown
-//         return <React.Fragment>
-//             <div className="count-down">
-//                 <span className="count-number">351</span>
-//                 <span className="count-head position-relative d-block">Days</span></div>
-//             <div className="count-down">
-//                 <span className="count-number">{hours}</span>
-//                 <span className="count-head position-relative d-block">Hours</span>
-//             </div> <div className="count-down">
-//                 <span className="count-number">{minutes}</span>
-//                 <span className="count-head position-relative d-block">Minutes</span>
-//             </div> <div className="count-down">
-//                 <span className="count-number">{seconds}</span>
-//                 <span className="count-head position-relative d-block">Seconds</span>
-//             </div>
-//         </React.Fragment>
-//     }
-// };
 
 class Section extends Component {
   render() {

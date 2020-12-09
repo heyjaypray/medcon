@@ -19,19 +19,31 @@ class LiveEvent extends Component {
     }
 
     componentDidMount = async () => {
-      const { course, selectVideo, selectCourse, user } = this.props;
+      const { course, selectVideo, selectCourse, user, addCourseToUser } = this.props;
 
       document.body.classList = '';
       document.getElementById('topnav').classList.add('bg-white');
       window.addEventListener('scroll', this.scrollNavigation, true);
 
       const { id } = this.props.match.params;
-      this.setState({ course: user.courses.find(s => s.id == id) });
       selectCourse(id);
+
+      if(!user.Subscribed_Courses || user.Subscribed_Courses.length < 1){
+        const obj = {
+          Subscribed_Courses : [{
+            course: id,
+            Modules_Viewed: [],
+            PercentageComplete: 0,
+            CME_CREDITS: 0
+          }]
+        };
+        // addCourseToUser(user.id ,obj);
+      }
     }
     // Make sure to remove the DOM listener when the component is unmounted.
     componentWillUnmount() {
       window.removeEventListener('scroll', this.scrollNavigation, true);
+      selectCourse(null);
     }
 
     scrollNavigation = () => {
@@ -46,8 +58,8 @@ class LiveEvent extends Component {
     }
 
     render() {
-      const { user } = this.props;
-      const { course } = this.state;
+      const { user, course } = this.props;
+
       return (
         <React.Fragment>
           {/* <section className="bg-profile d-table w-100" style={{ background: `url(${imgbg}) center center` }}>

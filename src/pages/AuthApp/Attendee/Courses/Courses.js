@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, UncontrolledTooltip, Progress, PaginationItem, PaginationLink, Pagination } from 'reactstrap';
 import { connect } from 'react-redux';
 
-import Categories from '../Components/Categories';
+import Categories from '../Components/CourseCategories';
 
 //Import Images
 import imgbg from '../../../../images/account/bg.jpg';
@@ -36,7 +36,10 @@ class AttendeeEvents extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, courses } = this.props;
+
+    const subbed_courses = user && user.Subscribed_Courses && user.Subscribed_Courses.map(i => i.course);
+
     return (
       <React.Fragment>
         <section className="bg-profile d-table w-100" style={{ background: `url(${imgbg}) center center` }}>
@@ -62,18 +65,22 @@ class AttendeeEvents extends Component {
 
         <section className="section mt-60">
  
-          <Row>
-            <Col lg="12" md="12" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
-              <div className="ml-lg-3">
-                <Categories item={user.courses} category="Subscribed" link="courses" />
-              </div>
-            </Col>
-          </Row>
+          {user && user.Subscribed_Courses && user.Subscribed_Courses.length > 0 ? 
+            <Row>
+              <Col lg="12" md="12" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
+                <div className="ml-lg-3">
+                  <Categories item={subbed_courses} user={user} category="Subscribed" link="courses" />
+                </div>
+              </Col>
+            </Row>
+            : null
+          }
+
 
           <Row>
             <Col lg="12" md="12" xs="12" className="mt-4 mt-sm-0 pt-2 pt-sm-0">
               <div className="ml-lg-3">
-                <Categories item={user.courses} category="Featured" link="courses" />
+                <Categories item={courses} user={user} category="Featured" link="courses" />
               </div>
             </Col>
           </Row>
@@ -84,9 +91,10 @@ class AttendeeEvents extends Component {
   }
 }
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users, main }) => {
+  const { courses } = main;
   const { user } = users;
-  return { user };
+  return { user, courses };
 };
 const mapActionsToProps = {
 
