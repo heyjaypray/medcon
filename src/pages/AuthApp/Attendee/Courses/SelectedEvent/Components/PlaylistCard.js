@@ -26,23 +26,21 @@ export default function PlaylistCard(props) {
 
   const { module, index } = props;
 
-  const [playlist, setPlaylist] = useState(null);
+  // const [playlist, setPlaylist] = useState(null);
 
-  const playlist_id = module.playlist_id;
+  // const playlist_id = module.playlist_id;
 
-  useEffect(() => {
-    console.log(playlist_id);
-    if(playlist_id){
-      axios.get(`https://cdn.jwplayer.com/v2/playlists/${playlist_id}`)
-        .then(res => {
-          const course = res.data;
-          setPlaylist(course);
-        });
-    };
-  },[playlist_id]);
+  // useEffect(() => {
+  //   console.log(playlist_id);
+  //   if(playlist_id){
+  //     axios.get(`https://cdn.jwplayer.com/v2/playlists/${playlist_id}`)
+  //       .then(res => {
+  //         const course = res.data;
+  //         setPlaylist(course);
+  //       });
+  //   };
+  // },[playlist_id]);
 
-
-  console.log({ playlist });
   return (
     <div className={classes.root}>
       <Accordion defaultExpanded={index === 0 ? true : false}>
@@ -53,12 +51,12 @@ export default function PlaylistCard(props) {
         >
           <Typography className={classes.heading}>{module.Title}</Typography>
         </AccordionSummary>
-        {playlist && playlist.playlist && playlist.playlist.map((i,index) => {
+        {module.playlist  && module.playlist.map((i,index) => {
           return (
             <AccordionDetails>
               <FormControlLabel
                 aria-label="Acknowledge"
-                onClick={(event) => event.stopPropagation()}
+                onClick={() => console.log('event', i)}
                 onFocus={(event) => event.stopPropagation()}
                 control={<Checkbox />}
                 label={i.title}

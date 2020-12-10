@@ -26,7 +26,6 @@ class About extends Component {
       const obj = {
         Subscribed_Courses: [...user.Subscribed_Courses, {course: id}]
       };
-      console.log({ obj });
       const subscribedId = user && user.Subscribed_Courses && user.Subscribed_Courses.map(i=> {
         return i.course.id;
       });

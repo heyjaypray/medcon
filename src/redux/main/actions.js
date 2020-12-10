@@ -46,13 +46,30 @@ export function selectCourse(id) {
   };
 }
 
-export function selectVideo(id, videoObj, obj) {
-
+export function selectVideo(videoObj, user, obj) {
   return async function (dispatch) {
 
+    console.log({ user });
+    console.log({ obj });
+
+    const Subscribed_Courses = user.Subscribed_Courses.map((i, item) => {
+      if(i.id !== obj.id){
+        return i;
+      } else{
+        return {
+          ...obj
+        };
+      }
+    })
+    ;
+
+    const res = await axios.put(`${db_url}/users/${user.id}`, {Subscribed_Courses: Subscribed_Courses});
+    const data = await res.data;
+
+    console.log({ data });
     return dispatch({
       type: SELECT_VIDEO,
-      data: id,
+      data: videoObj,
     });
   };
 }

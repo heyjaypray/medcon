@@ -19,7 +19,7 @@ class LiveEvent extends Component {
     }
 
     componentDidMount = async () => {
-      const { course, selectVideo, selectCourse, user, addCourseToUser } = this.props;
+      const { course, selectVideo, selectCourse, user, addCourseToUser, courseVideo } = this.props;
 
       document.body.classList = '';
       document.getElementById('topnav').classList.add('bg-white');
@@ -27,18 +27,6 @@ class LiveEvent extends Component {
 
       const { id } = this.props.match.params;
       selectCourse(id);
-
-      if(!user.Subscribed_Courses || user.Subscribed_Courses.length < 1){
-        const obj = {
-          Subscribed_Courses : [{
-            course: id,
-            Modules_Viewed: [],
-            PercentageComplete: 0,
-            CME_CREDITS: 0
-          }]
-        };
-        // addCourseToUser(user.id ,obj);
-      }
     }
     // Make sure to remove the DOM listener when the component is unmounted.
     componentWillUnmount() {
@@ -92,8 +80,8 @@ class LiveEvent extends Component {
 
 const mapStateToProps = ({ users, main }) => {
   const { user } = users;
-  const { courses, course } = main;
-  return { user, courses, course };
+  const { courses, course, courseVideo } = main;
+  return { user, courses, course, courseVideo };
 };
 const mapActionsToProps = {
   selectVideo,

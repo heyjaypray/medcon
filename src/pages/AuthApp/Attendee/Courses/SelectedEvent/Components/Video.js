@@ -5,11 +5,51 @@ import {Container} from 'reactstrap';
 import { connect } from 'react-redux';
 import db_url from '../../../../../../redux/db_url';
 import axios from 'axios';
+import { selectVideo } from '../../../../../../redux/main/actions';
 
 const VideoPlayer = (props) => {
-  const { course, index } = props;
+  const { course, index, user, selectVideo } = props;
+
+  console.log( { course });
 
   const [playlist, setPlaylist] = useState(null);
+  const [courseId, setCourseId] = useState(course);
+
+  const Subscribed_Course = user && user.Subscribed_Courses && user.Subscribed_Courses.filter(i => {
+    if(course){
+      const a = i.course.id;
+      const b = course.id;
+      return a == b;
+    } else {
+      return null;
+    }
+    
+  });
+
+  useEffect(() => {
+
+    const a = Subscribed_Course[0];
+
+    if(a && a.Modules_Viewed && a.Modules_Viewed.length < 1){
+      const b = course.Modules[0];
+
+      const c = {
+        About: b.About,
+        Description: b.Description,
+        Title: b.Title,
+        playlist_id: b.playlist_id,
+      };
+
+      a.Modules_Viewed.push(c);
+
+      console.log({ a });
+      console.log({ b });
+      selectVideo(b, user, a);
+    }
+
+  },[Subscribed_Course, course, selectVideo, user]);
+
+
 
   const playlist_id = course && course.Modules && course.Modules[0].playlist_id;
 
@@ -43,10 +83,11 @@ const VideoPlayer = (props) => {
 
 const mapStateToProps = ({ users, main }) => {
   const { courseVideo } = main;
-  return { courseVideo };
+  const { user } = users;
+  return { courseVideo, user };
 };
 const mapActionsToProps = {
-
+  selectVideo
 };
 
 export default connect(
