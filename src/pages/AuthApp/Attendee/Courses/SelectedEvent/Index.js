@@ -9,7 +9,7 @@ import VideoPlayer from './Components/Video';
 import AboutPage from './Components/About';
 import axios from 'axios';
 import db_url from '../../../../../redux/db_url';
-import { selectVideo, selectCourse } from '../../../../../redux/main/actions';
+import { selectCourse } from '../../../../../redux/main/actions';
 
 // import BlogBox from "../../../../components/Shared/blog-box";
 
@@ -84,7 +84,6 @@ const mapStateToProps = ({ users, main }) => {
   return { user, courses, course, courseVideo };
 };
 const mapActionsToProps = {
-  selectVideo,
   selectCourse
 };
 

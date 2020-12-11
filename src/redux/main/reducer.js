@@ -1,9 +1,7 @@
 import {
   GET_CONFERENCES,
   GET_COURSES,
-  SELECT_VIDEO,
-  SELECT_COURSE,
-  ADD_COURSE_TO_USER,
+  SELECT_COURSE
 } from './actions';
 
 const initialState = {
@@ -25,11 +23,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         courses: data,
-      };
-    case SELECT_VIDEO:
-      return {
-        ...state,
-        courseVideo: data,
       };
     case SELECT_COURSE:
       return {

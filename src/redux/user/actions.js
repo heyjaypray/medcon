@@ -6,6 +6,7 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const GET_USER = 'GET_USER';
 export const LOGOUT = 'LOGOUT';
 export const ADD_COURSE_TO_USER = 'ADD_COURSE_TO_USER';
+export const INIT_MODULES = 'INIT_MODULES';
 
 
 export function loginUser(email, password, history) {
@@ -82,6 +83,34 @@ export function addCourseToUser(id, obj) {
     return dispatch({
       type: ADD_COURSE_TO_USER,
       data: data,
+    });
+  };
+}
+
+
+export function initModules(videoObj, user, obj) {
+  return async function (dispatch) {
+
+    console.log({ user });
+    console.log({ obj });
+
+    const Subscribed_Courses = user.Subscribed_Courses.map((i, item) => {
+      if(i.id !== obj.id){
+        return i;
+      } else{
+        return {
+          ...obj
+        };
+      }
+    })
+    ;
+
+    const res = await axios.put(`${db_url}/users/${user.id}`, {Subscribed_Courses: Subscribed_Courses});
+    const data = await res.data;
+
+    console.log({ data });
+    return dispatch({
+      type: INIT_MODULES,
     });
   };
 }

@@ -5,7 +5,7 @@ import {Container} from 'reactstrap';
 import { connect } from 'react-redux';
 import db_url from '../../../../../../redux/db_url';
 import axios from 'axios';
-import { selectVideo } from '../../../../../../redux/main/actions';
+import { initModules } from '../../../../../../redux/user/actions';
 
 const VideoPlayer = (props) => {
   const { course, index, user, selectVideo } = props;
@@ -35,7 +35,7 @@ const VideoPlayer = (props) => {
         Viewed_Videos: [b.playlist[0]]
       };
       a.Modules_Viewed.push(c);
-      selectVideo(b, user, a);
+      initModules(b, user, a);
     } if(a && a.Modules_Viewed && a.Modules_Viewed.length > 0) {
       const d = a.Modules_Viewed
       const e = d && d[d.length -1].Viewed_Videos
@@ -74,7 +74,7 @@ const mapStateToProps = ({ users, main }) => {
   return { courseVideo, user };
 };
 const mapActionsToProps = {
-  selectVideo
+  initModules
 };
 
 export default connect(
