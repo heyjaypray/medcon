@@ -7,7 +7,7 @@ export const GET_USER = 'GET_USER';
 export const LOGOUT = 'LOGOUT';
 export const ADD_COURSE_TO_USER = 'ADD_COURSE_TO_USER';
 export const INIT_MODULES = 'INIT_MODULES';
-
+export const SELECT_COURSE = 'SELECT_COURSE';
 
 export function loginUser(email, password, history) {
   return async function (dispatch) {
@@ -111,6 +111,17 @@ export function initModules(videoObj, user, obj) {
     console.log({ data });
     return dispatch({
       type: INIT_MODULES,
+    });
+  };
+}
+
+export function selectCourse(id) {
+  return async function (dispatch) {
+    const res = await axios.get(`${db_url}/courses/${id}`);
+    const data = await res.data;
+    return dispatch({
+      type: SELECT_COURSE,
+      data: data,
     });
   };
 }

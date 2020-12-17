@@ -9,7 +9,7 @@ import VideoPlayer from './Components/Video';
 import AboutPage from './Components/About';
 import axios from 'axios';
 import db_url from '../../../../../redux/db_url';
-import { selectCourse } from '../../../../../redux/main/actions';
+import { selectCourse } from '../../../../../redux/user/actions';
 
 // import BlogBox from "../../../../components/Shared/blog-box";
 

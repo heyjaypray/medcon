@@ -5,7 +5,6 @@ import axios from 'axios';
 
 export const GET_CONFERENCES = 'GET_CONFERENCES';
 export const GET_COURSES = 'GET_COURSES';
-export const SELECT_COURSE = 'SELECT_COURSE';
 export const ADD_COURSE_TO_USER = 'ADD_COURSE_TO_USER';
 
 export function getConferences(amt) {
@@ -32,17 +31,6 @@ export function getCourses(amt) {
   };
 }
 
-export function selectCourse(id) {
-  
-  return async function (dispatch) {
 
-    const res = await axios.get(`${db_url}/courses/${id}`);
-    const data = await res.data;
-    return dispatch({
-      type: SELECT_COURSE,
-      data: data,
-    });
-  };
-}
 
 

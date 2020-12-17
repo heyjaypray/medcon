@@ -3,7 +3,8 @@ import {
   LOGIN_USER,
   LOGOUT,
   ADD_COURSE_TO_USER,
-  INIT_MODULES
+  INIT_MODULES,
+  SELECT_COURSE
 } from './actions';
 
 const initialState = {
@@ -35,12 +36,17 @@ export default function (state = initialState, action) {
     case ADD_COURSE_TO_USER:
       return {
         ...state,
-        user: {...state.user, Subscribed_Courses: data.Subscribed_Courses},
+        user: { ...state.user, Subscribed_Courses: data.Subscribed_Courses },
       };
-      case INIT_MODULES:
-        return {
-          ...state
-        };
+    case SELECT_COURSE:
+      return {
+        ...state,
+        course: data,
+      };
+    case INIT_MODULES:
+      return {
+        ...state
+      };
     default:
       return {
         ...state,
