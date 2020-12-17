@@ -79,8 +79,8 @@ class LiveEvent extends Component {
 }
 
 const mapStateToProps = ({ users, main }) => {
-  const { user } = users;
-  const { courses, course, courseVideo } = main;
+  const { user, course } = users;
+  const { courses, courseVideo } = main;
   return { user, courses, course, courseVideo };
 };
 const mapActionsToProps = {

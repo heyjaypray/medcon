@@ -7,8 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import axios from 'axios';
-import db_url from '../../../../../../redux/db_url';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,25 +19,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PlaylistCard(props) {
+const PlaylistCard = (props) => {
   const classes = useStyles();
 
   const { module, index } = props;
-
-  // const [playlist, setPlaylist] = useState(null);
-
-  // const playlist_id = module.playlist_id;
-
-  // useEffect(() => {
-  //   console.log(playlist_id);
-  //   if(playlist_id){
-  //     axios.get(`https://cdn.jwplayer.com/v2/playlists/${playlist_id}`)
-  //       .then(res => {
-  //         const course = res.data;
-  //         setPlaylist(course);
-  //       });
-  //   };
-  // },[playlist_id]);
 
   return (
     <div className={classes.root}>
@@ -67,4 +50,6 @@ export default function PlaylistCard(props) {
       </Accordion>
     </div>
   );
-}
+};
+
+export default PlaylistCard;

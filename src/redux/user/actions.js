@@ -8,6 +8,7 @@ export const LOGOUT = 'LOGOUT';
 export const ADD_COURSE_TO_USER = 'ADD_COURSE_TO_USER';
 export const INIT_MODULES = 'INIT_MODULES';
 export const SELECT_COURSE = 'SELECT_COURSE';
+export const SET_COURSE_VIDEO = 'SET_COURSE_VIDEO';
 
 export function loginUser(email, password, history) {
   return async function (dispatch) {
@@ -122,6 +123,15 @@ export function selectCourse(id) {
     return dispatch({
       type: SELECT_COURSE,
       data: data,
+    });
+  };
+}
+
+export function setCourseVideo(obj) {
+  return async function (dispatch) {
+    return dispatch({
+      type: SET_COURSE_VIDEO,
+      data: obj,
     });
   };
 }

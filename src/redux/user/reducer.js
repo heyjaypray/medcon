@@ -4,12 +4,14 @@ import {
   LOGOUT,
   ADD_COURSE_TO_USER,
   INIT_MODULES,
-  SELECT_COURSE
+  SELECT_COURSE,
+  SET_COURSE_VIDEO
 } from './actions';
 
 const initialState = {
   user: null,
-  loggedIn: false
+  loggedIn: false,
+  course_video: null
 };
 
 export default function (state = initialState, action) {
@@ -47,10 +49,14 @@ export default function (state = initialState, action) {
       return {
         ...state
       };
-    default:
+    case SET_COURSE_VIDEO:
       return {
         ...state,
-
+        course_video: data
+      };
+    default:
+      return {
+        ...state
       };
   }
 }
