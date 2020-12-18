@@ -91,10 +91,6 @@ export function addCourseToUser(id, obj) {
 
 export function initModules(videoObj, user, obj) {
   return async function (dispatch) {
-
-    console.log({ user });
-    console.log({ obj });
-
     const Subscribed_Courses = user.Subscribed_Courses.map((i, item) => {
       if(i.id !== obj.id){
         return i;
