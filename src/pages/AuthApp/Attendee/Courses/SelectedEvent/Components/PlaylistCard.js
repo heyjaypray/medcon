@@ -29,6 +29,15 @@ const PlaylistCard = (props) => {
   const a = Subscribed_Course.Modules_Viewed;
   const b = _.find(a, (o) => _.includes(o, module.playlist_id));
 
+  const selectVideo = async (e,i, c) => {
+    e.preventDefault();
+    if(!c){
+      await b.Viewed_Videos.push(i);
+    }
+    await setCourseVideo(i);
+    return;
+  };
+
   return (
     <div className={classes.root}>
       <Accordion defaultExpanded={true}>
@@ -45,7 +54,7 @@ const PlaylistCard = (props) => {
             <AccordionDetails>
               <FormControlLabel
                 aria-label="Acknowledge"
-                onClick={() => setCourseVideo(i)}
+                onClick={(e) => selectVideo(e,i,c)}
                 onFocus={(event) => event.stopPropagation()}
                 control={<Checkbox />}
                 label={i.title}
