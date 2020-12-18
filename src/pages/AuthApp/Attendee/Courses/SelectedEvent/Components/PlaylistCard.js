@@ -9,6 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { connect} from 'react-redux';
 import _ from 'lodash';
+import { setCourseVideo } from '../../../../../../redux/user/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,10 +24,11 @@ const useStyles = makeStyles((theme) => ({
 
 const PlaylistCard = (props) => {
   const classes = useStyles();
-  const { module, user, course } = props;
+  const { module, user, course, setCourseVideo } = props;
   const Subscribed_Course = _.find(user.Subscribed_Courses, (o) => _.includes(o.course, course.id));
   const a = Subscribed_Course.Modules_Viewed;
   const b = _.find(a, (o) => _.includes(o, module.playlist_id));
+
   return (
     <div className={classes.root}>
       <Accordion defaultExpanded={true}>
@@ -43,7 +45,7 @@ const PlaylistCard = (props) => {
             <AccordionDetails>
               <FormControlLabel
                 aria-label="Acknowledge"
-                onClick={() => console.log('event', i)}
+                onClick={() => setCourseVideo(i)}
                 onFocus={(event) => event.stopPropagation()}
                 control={<Checkbox />}
                 label={i.title}
@@ -62,6 +64,7 @@ const mapStateToProps = ({ users, main }) => {
   return { course_video, user };
 };
 const mapActionsToProps = {
+  setCourseVideo
 };
 
 export default connect(

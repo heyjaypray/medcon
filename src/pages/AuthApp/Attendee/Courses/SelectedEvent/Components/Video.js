@@ -3,21 +3,14 @@ import ReactJWPlayer from 'react-jw-player';
 import {Container} from 'reactstrap';
 import { connect } from 'react-redux';
 import { initModules, setCourseVideo } from '../../../../../../redux/user/actions';
+import _ from 'lodash';
 
 const VideoPlayer = (props) => {
   const { course, user, course_video, setCourseVideo } = props;
-  const Subscribed_Course = user && user.Subscribed_Courses && user.Subscribed_Courses.filter(i => {
-    if(course){
-      const a = i.course.id;
-      const b = course.id;
-      return a === b;
-    } else {
-      return null;
-    }
-  });
+  const Subscribed_Course = _.find(user && user.Subscribed_Courses, (o) => _.includes(o.course, course && course.id));
 
   useEffect(() => {
-    const a = Subscribed_Course[0];
+    const a = Subscribed_Course;
     if(a && a.Modules_Viewed && a.Modules_Viewed.length < 1){
       const b = course && course.Modules && course.Modules[0];
       const c = {
