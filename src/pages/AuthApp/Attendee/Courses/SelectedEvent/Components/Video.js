@@ -42,7 +42,7 @@ const VideoPlayer = (props) => {
           file={course_video && course_video.sources[course_video.sources.length-1].file}
         />
         
-        <p>{props.course && props.course.Description}</p>
+        <p>{course_video && course_video.title}</p>
       </Container>
     );
   } return (
