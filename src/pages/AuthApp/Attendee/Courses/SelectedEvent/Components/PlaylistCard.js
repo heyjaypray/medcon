@@ -23,23 +23,13 @@ const useStyles = makeStyles((theme) => ({
 
 const PlaylistCard = (props) => {
   const classes = useStyles();
-
-  const { module, module_index, user, course } = props;
-
+  const { module, user, course } = props;
   const Subscribed_Course = _.find(user.Subscribed_Courses, (o) => _.includes(o.course, course.id));
-
   const a = Subscribed_Course.Modules_Viewed;
-
-  const b = _.filter(a, (o) => _.includes(o, module.playlist_id));
-  console.log({ b });
-
-
-
-
-  
+  const b = _.find(a, (o) => _.includes(o, module.playlist_id));
   return (
     <div className={classes.root}>
-      <Accordion defaultExpanded={b ? true : false}>
+      <Accordion defaultExpanded={true}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -48,6 +38,7 @@ const PlaylistCard = (props) => {
           <Typography className={classes.heading}>{module.Title}</Typography>
         </AccordionSummary>
         {module.playlist  && module.playlist.map((i,index) => {
+          const c = _.find(b && b.Viewed_Videos, (o) => _.includes(o, i.mediaid));
           return (
             <AccordionDetails>
               <FormControlLabel
@@ -56,6 +47,7 @@ const PlaylistCard = (props) => {
                 onFocus={(event) => event.stopPropagation()}
                 control={<Checkbox />}
                 label={i.title}
+                checked={c ? true : false}
               />
             </AccordionDetails>
           );
