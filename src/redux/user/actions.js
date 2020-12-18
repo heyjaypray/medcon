@@ -103,8 +103,7 @@ export function initModules(videoObj, user, obj) {
           ...obj
         };
       }
-    })
-    ;
+    });
 
     const res = await axios.put(`${db_url}/users/${user.id}`, {Subscribed_Courses: Subscribed_Courses});
     const data = await res.data;
