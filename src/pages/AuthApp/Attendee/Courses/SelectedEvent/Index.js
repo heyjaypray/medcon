@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
-import Banner from '../../../../Conferences/Banner';
-import ReactJWPlayer from 'react-jw-player';
 import Playlist from './Components/Playlist';
 import VideoPlayer from './Components/Video';
 import AboutPage from './Components/About';
-import axios from 'axios';
-import db_url from '../../../../../redux/db_url';
 import { selectCourse } from '../../../../../redux/user/actions';
 
-// import BlogBox from "../../../../components/Shared/blog-box";
 
 class LiveEvent extends Component {
     state = {
@@ -19,7 +13,7 @@ class LiveEvent extends Component {
     }
 
     componentDidMount = async () => {
-      const { course, selectVideo, selectCourse, user, addCourseToUser, courseVideo } = this.props;
+      const { selectCourse } = this.props;
 
       document.body.classList = '';
       document.getElementById('topnav').classList.add('bg-white');
@@ -50,14 +44,7 @@ class LiveEvent extends Component {
 
       return (
         <React.Fragment>
-          {/* <section className="bg-profile d-table w-100" style={{ background: `url(${imgbg}) center center` }}>
-                    <Container>
-                        
-                    </Container>
-                </section> */}
-          {/* <Sidebar /> */}
           <section>
-
             <Row className="mt-5" >
               <Col lg="9" md="12" sm="12" className="mt-5 ml-2">
                 <VideoPlayer course={course} />
@@ -71,7 +58,6 @@ class LiveEvent extends Component {
                 <AboutPage course={course} />
               </Col>
             </Row>
-
           </section>
         </React.Fragment>
       );

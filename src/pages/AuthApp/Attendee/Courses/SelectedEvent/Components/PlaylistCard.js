@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import { connect} from 'react-redux';
+import _ from 'lodash';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,11 +24,22 @@ const useStyles = makeStyles((theme) => ({
 const PlaylistCard = (props) => {
   const classes = useStyles();
 
-  const { module, index } = props;
+  const { module, module_index, user, course } = props;
 
+  const Subscribed_Course = _.find(user.Subscribed_Courses, (o) => _.includes(o.course, course.id));
+
+  const a = Subscribed_Course.Modules_Viewed;
+
+  const b = _.filter(a, (o) => _.includes(o, module.playlist_id));
+  console.log({ b });
+
+
+
+
+  
   return (
     <div className={classes.root}>
-      <Accordion defaultExpanded={index === 0 ? true : false}>
+      <Accordion defaultExpanded={b ? true : false}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -52,4 +65,14 @@ const PlaylistCard = (props) => {
   );
 };
 
-export default PlaylistCard;
+const mapStateToProps = ({ users, main }) => {
+  const { user, course_video } = users;
+  return { course_video, user };
+};
+const mapActionsToProps = {
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(PlaylistCard);

@@ -5,10 +5,7 @@ import { connect } from 'react-redux';
 import { initModules, setCourseVideo } from '../../../../../../redux/user/actions';
 
 const VideoPlayer = (props) => {
-  const { course, index, user, selectVideo, course_video, setCourseVideo } = props;
-
-  const [video, setVideo] = useState(null);
-
+  const { course, user, course_video, setCourseVideo } = props;
   const Subscribed_Course = user && user.Subscribed_Courses && user.Subscribed_Courses.filter(i => {
     if(course){
       const a = i.course.id;
@@ -17,7 +14,6 @@ const VideoPlayer = (props) => {
     } else {
       return null;
     }
-    
   });
 
   useEffect(() => {
@@ -42,9 +38,6 @@ const VideoPlayer = (props) => {
       }
     }
   },[Subscribed_Course, course, setCourseVideo, user]);
-
-
-  console.log({ video });
 
   if(course_video){
     return (
