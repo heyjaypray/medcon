@@ -29,12 +29,14 @@ const PlaylistCard = (props) => {
   const a = Subscribed_Course.Modules_Viewed;
   const b = _.find(a, (o) => _.includes(o, module.playlist_id));
 
-  const selectVideo = async (e,i, c) => {
+  const selectVideo = async (e,i,c) => {
     e.preventDefault();
+
     if(!c){
       await b.Viewed_Videos.push(i);
     }
-    await setCourseVideo(i);
+
+    await setCourseVideo(i, user, c);
     return;
   };
 
@@ -55,7 +57,6 @@ const PlaylistCard = (props) => {
               <FormControlLabel
                 aria-label="Acknowledge"
                 onClick={(e) => selectVideo(e,i,c)}
-                onFocus={(event) => event.stopPropagation()}
                 control={<Checkbox />}
                 label={i.title}
                 checked={c ? true : false}

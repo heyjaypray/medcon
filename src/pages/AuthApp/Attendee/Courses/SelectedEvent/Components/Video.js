@@ -21,13 +21,13 @@ const VideoPlayer = (props) => {
         Viewed_Videos: [b.playlist[0]]
       };
       a.Modules_Viewed.push(c);
-      initModules(b, user, a);
+      initModules(user, a);
     } if(a && a.Modules_Viewed && a.Modules_Viewed.length > 0) {
       const d = a.Modules_Viewed;
       const e = d && d[d.length -1].Viewed_Videos;
       const f = e[e.length-1];
       if(f) {
-        setCourseVideo(f);
+        setCourseVideo(f, user, true);
       }
     }
   },[Subscribed_Course, course, setCourseVideo, user]);

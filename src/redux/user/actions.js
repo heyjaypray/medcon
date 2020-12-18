@@ -89,7 +89,7 @@ export function addCourseToUser(id, obj) {
 }
 
 
-export function initModules(videoObj, user, obj) {
+export function initModules(user, obj) {
   return async function (dispatch) {
     const Subscribed_Courses = user.Subscribed_Courses.map((i, item) => {
       if(i.id !== obj.id){
@@ -122,8 +122,18 @@ export function selectCourse(id) {
   };
 }
 
-export function setCourseVideo(obj) {
+export function setCourseVideo(obj, user, check) {
   return async function (dispatch) {
+
+    console.log({ user });
+
+    if(!check){
+      const res = await axios.put(`${db_url}/users/${user.id}`, {Subscribed_Courses: user.Subscribed_Courses});
+      const data = await res.data;
+    }
+
+
+
     return dispatch({
       type: SET_COURSE_VIDEO,
       data: obj,
