@@ -25,20 +25,43 @@ const useStyles = makeStyles((theme) => ({
 const PlaylistCard = (props) => {
   const classes = useStyles();
   const { module, user, course, setCourseVideo } = props;
+
+
+
   const Subscribed_Course = _.find(user.Subscribed_Courses, (o) => _.includes(o.course, course.id));
-  const a = Subscribed_Course.Modules_Viewed;
-  const b = _.find(a, (o) => _.includes(o, module.playlist_id));
+  let a = Subscribed_Course.Modules_Viewed;
+  let b = _.find(a, (o) => _.includes(o, module.playlist_id));
 
   const selectVideo = async (e,i,c) => {
     e.preventDefault();
 
-    if(!c){
-      await b.Viewed_Videos.push(i);
+    const f = {
+      About: module.About,
+      Description: module.Description,
+      Title: module.Title,
+      playlist_id: module.playlist_id,
+      Viewed_Videos: []
+    };
+
+    let d = _.find(a, (o) => _.includes(o, module.playlist_id));
+    let g = _.find(d && d.Viewed_Videos, (o) => _.includes(o, i.mediaid));
+
+    if(!d){
+      a.push(f);
     }
 
-    await setCourseVideo(i, user, c);
+    if(!g){
+      if(d){
+        await d.Viewed_Videos.push(i);
+      } 
+    }
+
+    await setCourseVideo(i, user, g);
     return;
   };
+
+  console.log({ b });
+  console.log({ a });
 
   return (
     <div className={classes.root}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ReactJWPlayer from 'react-jw-player';
 import {Container} from 'reactstrap';
 import { connect } from 'react-redux';
@@ -7,10 +7,9 @@ import _ from 'lodash';
 
 const VideoPlayer = (props) => {
   const { course, user, course_video, setCourseVideo } = props;
-  const Subscribed_Course = _.find(user && user.Subscribed_Courses, (o) => _.includes(o.course, course && course.id));
+  const a = _.find(user && user.Subscribed_Courses, (o) => _.includes(o.course, course && course.id));
 
   useEffect(() => {
-    const a = Subscribed_Course;
     if(a && a.Modules_Viewed && a.Modules_Viewed.length < 1){
       const b = course && course.Modules && course.Modules[0];
       const c = {
@@ -30,7 +29,7 @@ const VideoPlayer = (props) => {
         setCourseVideo(f, user, true);
       }
     }
-  },[Subscribed_Course, course, setCourseVideo, user]);
+  },[a, course, setCourseVideo, user]);
 
   if(course_video){
     return (
@@ -40,6 +39,7 @@ const VideoPlayer = (props) => {
           playerId='vWNdCs80'
           playerScript='https://cdn.jwplayer.com/libraries/vWNdCs80.js'
           file={course_video && course_video.sources[course_video.sources.length-1].file}
+          // isAutoPlay={true}
         />
         
         <p>{course_video && course_video.title}</p>
