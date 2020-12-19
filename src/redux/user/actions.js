@@ -128,7 +128,6 @@ export function setCourseVideo(obj, user, check) {
     if(!check){
       const res = axios.put(`${db_url}/users/${user.id}`, {Subscribed_Courses: user.Subscribed_Courses});
     }
-
     return dispatch({
       type: SET_COURSE_VIDEO,
       data: obj,

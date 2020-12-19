@@ -26,8 +26,6 @@ const PlaylistCard = (props) => {
   const classes = useStyles();
   const { module, user, course, setCourseVideo } = props;
 
-
-
   const Subscribed_Course = _.find(user.Subscribed_Courses, (o) => _.includes(o.course, course.id));
   let a = Subscribed_Course.Modules_Viewed;
   let b = _.find(a, (o) => _.includes(o, module.playlist_id));
@@ -59,9 +57,6 @@ const PlaylistCard = (props) => {
     await setCourseVideo(i, user, g);
     return;
   };
-
-  console.log({ b });
-  console.log({ a });
 
   return (
     <div className={classes.root}>
