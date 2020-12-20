@@ -11,7 +11,8 @@ import {
 const initialState = {
   user: null,
   loggedIn: false,
-  course_video: null
+  course_video: null,
+  course: null
 };
 
 export default function (state = initialState, action) {

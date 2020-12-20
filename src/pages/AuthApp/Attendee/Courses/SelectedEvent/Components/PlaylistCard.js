@@ -28,9 +28,6 @@ const PlaylistCard = (props) => {
 
   const [Course, setCourse] = useState(null);
   const [Module, setModule] = useState(null);
-  const [Modules_Viewed, set_Modules_Viewed] = useState([]);
-  const [Viewed_Videos, set_Viewed_Videos] = useState([]);
-  const [Video, setVideo] = useState(null);
 
 
   useEffect(() => {
@@ -45,7 +42,7 @@ const PlaylistCard = (props) => {
   const selectVideo = async (e,i,c) => {
     e.preventDefault();
 
-    console.log({ Module });
+    // console.log({ Module });
 
     if(!Module){
       const f = {
@@ -64,9 +61,18 @@ const PlaylistCard = (props) => {
     } else { 
       const a = _.find(Module && Module.Viewed_Videos, (o) => _.includes(o, i.mediaid));
 
+      const b = _.find(Course.Modules_Viewed, (o) => _.includes(o, module.playlist_id));
+
+      console.log('a==>>>', { a });
+
       if(!a){
 
-        console.log(Course.Modules_Viewed);
+        //console.log(Course.Modules_Viewed);
+
+        if(!b){
+          setModule(b);
+        }
+
 
         setCourse({
           ...Course,
@@ -77,7 +83,7 @@ const PlaylistCard = (props) => {
               return j;
             } else{
               return {
-                ...j, Viewed_Videos: [...Viewed_Videos, i]
+                ...j, Viewed_Videos: [...j.Viewed_Videos, i]
               };
             }
           })
