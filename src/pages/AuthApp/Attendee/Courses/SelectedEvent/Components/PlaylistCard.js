@@ -59,19 +59,20 @@ const PlaylistCard = (props) => {
       });
       await setModule(f);
     } else { 
-      const a = _.find(Module && Module.Viewed_Videos, (o) => _.includes(o, i.mediaid));
+      console.log('hey==>>>>', i, 'vieddd==>>', Module.Viewed_Videos);
+      //const a = _.find(Module && Module.Viewed_Videos, (o) => _.includes(o, i.mediaid));
+      const selectedModuleIndex = Course?.Modules_Viewed.findIndex(m => m.playlist_id === i.feedid);
+      const a = (Course?.Modules_Viewed[selectedModuleIndex]?.Viewed_Videos || []).some(v => v.mediaid === i.mediaid);
 
-      const b = _.find(Course.Modules_Viewed, (o) => _.includes(o, module.playlist_id));
+      //const b = _.find(Course.Modules_Viewed, (o) => _.includes(o, module.playlist_id));
 
-      console.log('a==>>>', { a });
+      console.log('a==>>>', Course, 'iiii', i);
+
+      console.log({ a });
 
       if(!a){
 
         //console.log(Course.Modules_Viewed);
-
-        if(!b){
-          setModule(b);
-        }
 
 
         setCourse({
