@@ -24,39 +24,84 @@ const useStyles = makeStyles((theme) => ({
 
 const PlaylistCard = (props) => {
   const classes = useStyles();
-  const { module, user, course, setCourseVideo } = props;
+  const { module, user, course, setCourseVideo, module_index } = props;
 
-  const Subscribed_Course = _.find(user.Subscribed_Courses, (o) => _.includes(o.course, course.id));
-  let a = Subscribed_Course.Modules_Viewed;
-  let b = _.find(a, (o) => _.includes(o, module.playlist_id));
+  const [Course, setCourse] = useState(null);
+  const [Module, setModule] = useState(null);
+  const [Modules_Viewed, set_Modules_Viewed] = useState([]);
+  const [Viewed_Videos, set_Viewed_Videos] = useState([]);
+  const [Video, setVideo] = useState(null);
+
+
+  useEffect(() => {
+    const a = _.find(user.Subscribed_Courses, (o) => _.includes(o.course, course.id));
+    const b = a.Modules_Viewed;
+    const c = _.find(b, (o) => _.includes(o, module.playlist_id));
+    setCourse(a);
+    setModule(c);
+    set_Modules_Viewed(b);
+  }, [user.Subscribed_Courses, course.id, module.playlist_id]);
+
 
   const selectVideo = async (e,i,c) => {
     e.preventDefault();
 
-    const f = {
-      About: module.About,
-      Description: module.Description,
-      Title: module.Title,
-      playlist_id: module.playlist_id,
-      Viewed_Videos: []
-    };
+    if(!Module){
+      const f = {
+        About: module.About,
+        Description: module.Description,
+        Title: module.Title,
+        playlist_id: module.playlist_id,
+        Viewed_Videos: [i]
+      };
 
-    let d = _.find(a, (o) => _.includes(o, module.playlist_id));
-    let g = _.find(d && d.Viewed_Videos, (o) => _.includes(o, i.mediaid));
+      await setCourse({
+        ...Course,
+        Modules_Viewed: [...Modules_Viewed, f]
+      });
+      await setModule(f);
 
-    if(!d){
-      a.push(f);
+      
+    } else {
+
+      
+      const Viewed_Videos = Course.Modules_Viewed[module_index].Viewed_Videos;
+
+      const a = _.find(Module && Module.Viewed_Videos, (o) => _.includes(o, i.mediaid));
+
+      if(!a){
+        alert('hii');
+        setCourse({
+          ...Course,
+          Modules_Viewed: Course.Modules_Viewed.map(j => {
+
+            console.log(j);
+            console.log(Module);
+
+            if(j.playlist_id !== Module.playlist_id){
+              return j;
+            } else{
+              return {
+                ...j, Viewed_Videos: [...Viewed_Videos, i]
+              };
+            }
+          })
+        });
+      }
+
     }
 
-    if(!g){
-      if(d){
-        await d.Viewed_Videos.push(i);
-      } 
-    }
-
-    await setCourseVideo(i, user, g);
+    // await setCourseVideo(i, user, g);
     return;
   };
+
+
+
+  console.log(module_index);
+  console.log({ Course });
+  console.log({ Module });
+  console.log({ Viewed_Videos });
+  console.log({ Video });
 
   return (
     <div className={classes.root}>
@@ -69,15 +114,15 @@ const PlaylistCard = (props) => {
           <Typography className={classes.heading}>{module.Title}</Typography>
         </AccordionSummary>
         {module.playlist  && module.playlist.map((i,index) => {
-          const c = _.find(b && b.Viewed_Videos, (o) => _.includes(o, i.mediaid));
+          // const c = _.find(b && b.Viewed_Videos, (o) => _.includes(o, i.mediaid));
           return (
             <AccordionDetails>
               <FormControlLabel
                 aria-label="Acknowledge"
-                onClick={(e) => selectVideo(e,i,c)}
+                onClick={(e) => selectVideo(e,i)}
                 control={<Checkbox />}
                 label={i.title}
-                checked={c ? true : false}
+                // checked={c ? true : false}
               />
             </AccordionDetails>
           );
