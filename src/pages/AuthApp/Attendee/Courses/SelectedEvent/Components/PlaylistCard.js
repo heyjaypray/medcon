@@ -39,12 +39,13 @@ const PlaylistCard = (props) => {
     const c = _.find(b, (o) => _.includes(o, module.playlist_id));
     setCourse(a);
     setModule(c);
-    set_Modules_Viewed(b);
   }, [user.Subscribed_Courses, course.id, module.playlist_id]);
 
 
   const selectVideo = async (e,i,c) => {
     e.preventDefault();
+
+    console.log({ Module });
 
     if(!Module){
       const f = {
@@ -57,27 +58,21 @@ const PlaylistCard = (props) => {
 
       await setCourse({
         ...Course,
-        Modules_Viewed: [...Modules_Viewed, f]
+        Modules_Viewed: [...Course.Modules_Viewed, f]
       });
       await setModule(f);
-
-      
-    } else {
-
-      
-      const Viewed_Videos = Course.Modules_Viewed[module_index].Viewed_Videos;
-
+    } else { 
       const a = _.find(Module && Module.Viewed_Videos, (o) => _.includes(o, i.mediaid));
 
       if(!a){
-        alert('hii');
+
+        console.log(Course.Modules_Viewed);
+
         setCourse({
           ...Course,
           Modules_Viewed: Course.Modules_Viewed.map(j => {
-
-            console.log(j);
-            console.log(Module);
-
+            console.log('module', Module);
+            console.log('jjj', j);
             if(j.playlist_id !== Module.playlist_id){
               return j;
             } else{
@@ -88,20 +83,13 @@ const PlaylistCard = (props) => {
           })
         });
       }
-
     }
 
     // await setCourseVideo(i, user, g);
     return;
   };
 
-
-
-  console.log(module_index);
   console.log({ Course });
-  console.log({ Module });
-  console.log({ Viewed_Videos });
-  console.log({ Video });
 
   return (
     <div className={classes.root}>
