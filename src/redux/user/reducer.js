@@ -52,12 +52,9 @@ export default function (state = initialState, action) {
         ...state
       };
     case ADD_COURSE_MODULE:
-
-      console.log({data});
-
       return {
         ...state,
-        user: data
+        user: { ...state.user, Subscribed_Courses: data.Subscribed_Courses },
       };
     case SET_COURSE_VIDEO:
       return {

@@ -11,6 +11,7 @@ export const INIT_MODULES = 'INIT_MODULES';
 export const SELECT_COURSE = 'SELECT_COURSE';
 export const SET_COURSE_VIDEO = 'SET_COURSE_VIDEO';
 export const ADD_COURSE_MODULE = 'ADD_COURSE_MODULE';
+export const ADD_VIEWED_VIDEO = 'ADD_VIEWED_VIDEO';
 
 export function loginUser(email, password, history) {
   return async function (dispatch) {
@@ -127,10 +128,6 @@ export function selectCourse(id) {
 
 export function addCourseModule(course, obj, user) {
 
-  console.log({ course });
-  console.log({ obj });
-  console.log({ user });
-
   const a = _.find(user.Subscribed_Courses, (o) => _.includes(o.course, course.id));
   const b = a.Modules_Viewed;
   const c = _.find(b, (o) => _.includes(o, obj.playlist_id));
@@ -148,14 +145,33 @@ export function addCourseModule(course, obj, user) {
       return {...a, Modules_Viewed: Modules_Viewed};
     }
   })};
-
-
-  console.log({ newUser });
   
   return async function (dispatch) {
+
+    if(!c){
+      const res = await axios.put(`${db_url}/users/${user.id}`, {Subscribed_Courses: newUser.Subscribed_Courses});
+      const data = await res.data;
+    }
+
     return dispatch({
       type: ADD_COURSE_MODULE,
       data: newUser,
+    });
+  };
+}
+
+export function addViewedVideo(course, video, user, module) {
+
+  console.log({ course });
+  console.log({ video });
+  console.log({ user });
+  console.log({ module });
+
+  return async function (dispatch) {
+
+    return dispatch({
+      type: ADD_VIEWED_VIDEO,
+      // data: obj,
     });
   };
 }

@@ -9,7 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { connect} from 'react-redux';
 import _ from 'lodash';
-import { setCourseVideo, addCourseModule } from '../../../../../../redux/user/actions';
+import { setCourseVideo, addCourseModule, addViewedVideo } from '../../../../../../redux/user/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PlaylistCard = (props) => {
   const classes = useStyles();
-  const { module, user, course, setCourseVideo, module_index, addCourseModule } = props;
+  const { module, user, course, setCourseVideo, module_index, addCourseModule, addViewedVideo } = props;
 
   const [Course, setCourse] = useState(null);
   const [Module, setModule] = useState(null);
@@ -50,22 +50,15 @@ const PlaylistCard = (props) => {
         playlist_id: module.playlist_id,
         Viewed_Videos: [i]
       };
-
-
-      // await setCourse({
-      //   ...Course,
-      //   Modules_Viewed: [...Course.Modules_Viewed, f]
-      // });
-      // await setModule(f);
-
-
       addCourseModule(course, f, user);
-
 
     } else { 
       const selectedModuleIndex = Course?.Modules_Viewed.findIndex(m => m.playlist_id === i.feedid);
       const a = (Course?.Modules_Viewed[selectedModuleIndex]?.Viewed_Videos || []).some(v => v.mediaid === i.mediaid);
 
+      console.log({ a });
+
+      addViewedVideo(course, i, user, module);
 
 
     }
@@ -108,7 +101,8 @@ const mapStateToProps = ({ users, main }) => {
 };
 const mapActionsToProps = {
   setCourseVideo,
-  addCourseModule
+  addCourseModule,
+  addViewedVideo
 };
 
 export default connect(

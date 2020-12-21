@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import ReactJWPlayer from 'react-jw-player';
 import {Container} from 'reactstrap';
 import { connect } from 'react-redux';
-import { initModules, setCourseVideo } from '../../../../../../redux/user/actions';
+import { initModules, setCourseVideo, addCourseModule } from '../../../../../../redux/user/actions';
 import _ from 'lodash';
 
 const VideoPlayer = (props) => {
-  const { course, user, course_video, setCourseVideo } = props;
+  const { course, user, course_video, setCourseVideo, } = props;
   const a = _.find(user && user.Subscribed_Courses, (o) => _.includes(o.course, course && course.id));
 
   useEffect(() => {
@@ -57,7 +57,8 @@ const mapStateToProps = ({ users, main }) => {
 };
 const mapActionsToProps = {
   initModules,
-  setCourseVideo
+  setCourseVideo,
+  addCourseModule
 };
 
 export default connect(
