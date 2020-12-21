@@ -1,6 +1,7 @@
 import db_url from '../db_url';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import _ from 'lodash';
 
 export const LOGIN_USER = 'LOGIN_USER';
 export const GET_USER = 'GET_USER';
@@ -9,6 +10,7 @@ export const ADD_COURSE_TO_USER = 'ADD_COURSE_TO_USER';
 export const INIT_MODULES = 'INIT_MODULES';
 export const SELECT_COURSE = 'SELECT_COURSE';
 export const SET_COURSE_VIDEO = 'SET_COURSE_VIDEO';
+export const ADD_COURSE_MODULE = 'ADD_COURSE_MODULE';
 
 export function loginUser(email, password, history) {
   return async function (dispatch) {
@@ -118,6 +120,42 @@ export function selectCourse(id) {
     return dispatch({
       type: SELECT_COURSE,
       data: data,
+    });
+  };
+}
+
+
+export function addCourseModule(course, obj, user) {
+
+  console.log({ course });
+  console.log({ obj });
+  console.log({ user });
+
+  const a = _.find(user.Subscribed_Courses, (o) => _.includes(o.course, course.id));
+  const b = a.Modules_Viewed;
+  const c = _.find(b, (o) => _.includes(o, obj.playlist_id));
+  
+  let Modules_Viewed = b;
+
+  if(!c){
+    Modules_Viewed = [...b, obj];
+  }
+
+  const newUser = {...user, Subscribed_Courses: user.Subscribed_Courses.map(i => {
+    if(i.id !== a.id){
+      return i;
+    } else {
+      return {...a, Modules_Viewed: Modules_Viewed};
+    }
+  })};
+
+
+  console.log({ newUser });
+  
+  return async function (dispatch) {
+    return dispatch({
+      type: ADD_COURSE_MODULE,
+      data: newUser,
     });
   };
 }

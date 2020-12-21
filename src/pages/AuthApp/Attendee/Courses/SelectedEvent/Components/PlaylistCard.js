@@ -9,7 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { connect} from 'react-redux';
 import _ from 'lodash';
-import { setCourseVideo } from '../../../../../../redux/user/actions';
+import { setCourseVideo, addCourseModule } from '../../../../../../redux/user/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PlaylistCard = (props) => {
   const classes = useStyles();
-  const { module, user, course, setCourseVideo, module_index } = props;
+  const { module, user, course, setCourseVideo, module_index, addCourseModule } = props;
 
   const [Course, setCourse] = useState(null);
   const [Module, setModule] = useState(null);
@@ -41,10 +41,8 @@ const PlaylistCard = (props) => {
 
   const selectVideo = async (e,i,c) => {
     e.preventDefault();
-
-    // console.log({ Module });
-
     if(!Module){
+
       const f = {
         About: module.About,
         Description: module.Description,
@@ -53,50 +51,28 @@ const PlaylistCard = (props) => {
         Viewed_Videos: [i]
       };
 
-      await setCourse({
-        ...Course,
-        Modules_Viewed: [...Course.Modules_Viewed, f]
-      });
-      await setModule(f);
+
+      // await setCourse({
+      //   ...Course,
+      //   Modules_Viewed: [...Course.Modules_Viewed, f]
+      // });
+      // await setModule(f);
+
+
+      addCourseModule(course, f, user);
+
+
     } else { 
-      console.log('hey==>>>>', i, 'vieddd==>>', Module.Viewed_Videos);
-      //const a = _.find(Module && Module.Viewed_Videos, (o) => _.includes(o, i.mediaid));
       const selectedModuleIndex = Course?.Modules_Viewed.findIndex(m => m.playlist_id === i.feedid);
       const a = (Course?.Modules_Viewed[selectedModuleIndex]?.Viewed_Videos || []).some(v => v.mediaid === i.mediaid);
 
-      //const b = _.find(Course.Modules_Viewed, (o) => _.includes(o, module.playlist_id));
-
-      console.log('a==>>>', Course, 'iiii', i);
-
-      console.log({ a });
-
-      if(!a){
-
-        //console.log(Course.Modules_Viewed);
 
 
-        setCourse({
-          ...Course,
-          Modules_Viewed: Course.Modules_Viewed.map(j => {
-            console.log('module', Module);
-            console.log('jjj', j);
-            if(j.playlist_id !== Module.playlist_id){
-              return j;
-            } else{
-              return {
-                ...j, Viewed_Videos: [...j.Viewed_Videos, i]
-              };
-            }
-          })
-        });
-      }
     }
 
     // await setCourseVideo(i, user, g);
     return;
   };
-
-  console.log({ Course });
 
   return (
     <div className={classes.root}>
@@ -109,7 +85,6 @@ const PlaylistCard = (props) => {
           <Typography className={classes.heading}>{module.Title}</Typography>
         </AccordionSummary>
         {module.playlist  && module.playlist.map((i,index) => {
-          // const c = _.find(b && b.Viewed_Videos, (o) => _.includes(o, i.mediaid));
           return (
             <AccordionDetails>
               <FormControlLabel
@@ -132,7 +107,8 @@ const mapStateToProps = ({ users, main }) => {
   return { course_video, user };
 };
 const mapActionsToProps = {
-  setCourseVideo
+  setCourseVideo,
+  addCourseModule
 };
 
 export default connect(

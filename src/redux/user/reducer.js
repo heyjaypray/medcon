@@ -5,7 +5,8 @@ import {
   ADD_COURSE_TO_USER,
   INIT_MODULES,
   SELECT_COURSE,
-  SET_COURSE_VIDEO
+  SET_COURSE_VIDEO,
+  ADD_COURSE_MODULE
 } from './actions';
 
 const initialState = {
@@ -18,7 +19,7 @@ const initialState = {
 export default function (state = initialState, action) {
   const { type, data } = action;
   switch (type) {
-    case LOGIN_USER:
+    case LOGIN_USER: 
       return {
         ...state,
         user: data,
@@ -49,6 +50,14 @@ export default function (state = initialState, action) {
     case INIT_MODULES:
       return {
         ...state
+      };
+    case ADD_COURSE_MODULE:
+
+      console.log({data});
+
+      return {
+        ...state,
+        user: data
       };
     case SET_COURSE_VIDEO:
       return {
