@@ -161,27 +161,43 @@ export function addCourseModule(course, obj, user) {
 }
 
 export function addViewedVideo(course, video, user, module) {
+  const a = _.find(user.Subscribed_Courses, (o) => _.includes(o.course, course.id));
+  const b = a.Modules_Viewed;
 
-  console.log({ course });
-  console.log({ video });
-  console.log({ user });
-  console.log({ module });
+  const newModules = b.map(j => {
+    if(j.playlist_id !== module.playlist_id){
+      return j;
+    } else {
+      return {
+        ...j, Viewed_Videos: [...j.Viewed_Videos, video]
+      };
+    }
+  });
+
+  const newUser = {...user, Subscribed_Courses: user.Subscribed_Courses.map(i => {
+    if(i.id !== a.id){
+      return i;
+    } else {
+      return {...a, Modules_Viewed: newModules};
+    }
+  })};
 
   return async function (dispatch) {
 
+
+    const res = await axios.put(`${db_url}/users/${user.id}`, {Subscribed_Courses: newUser.Subscribed_Courses});
+    const data = await res.data;
+
+
     return dispatch({
       type: ADD_VIEWED_VIDEO,
-      // data: obj,
+      data: newUser,
     });
   };
 }
 
 export function setCourseVideo(obj, user, check) {
   return async function (dispatch) {
-
-    if(!check){
-      const res = axios.put(`${db_url}/users/${user.id}`, {Subscribed_Courses: user.Subscribed_Courses});
-    }
     return dispatch({
       type: SET_COURSE_VIDEO,
       data: obj,

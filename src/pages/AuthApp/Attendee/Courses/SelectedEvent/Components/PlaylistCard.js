@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 const PlaylistCard = (props) => {
   const classes = useStyles();
-  const { module, user, course, setCourseVideo, module_index, addCourseModule, addViewedVideo } = props;
+  const { module, user, course, setCourseVideo, addCourseModule, addViewedVideo } = props;
 
   const [Course, setCourse] = useState(null);
   const [Module, setModule] = useState(null);
@@ -41,8 +41,8 @@ const PlaylistCard = (props) => {
 
   const selectVideo = async (e,i,c) => {
     e.preventDefault();
+    setCourseVideo(i);
     if(!Module){
-
       const f = {
         About: module.About,
         Description: module.Description,
@@ -51,19 +51,13 @@ const PlaylistCard = (props) => {
         Viewed_Videos: [i]
       };
       addCourseModule(course, f, user);
-
     } else { 
       const selectedModuleIndex = Course?.Modules_Viewed.findIndex(m => m.playlist_id === i.feedid);
       const a = (Course?.Modules_Viewed[selectedModuleIndex]?.Viewed_Videos || []).some(v => v.mediaid === i.mediaid);
-
-      console.log({ a });
-
-      addViewedVideo(course, i, user, module);
-
-
+      if(!a){
+        addViewedVideo(course, i, user, module);
+      }
     }
-
-    // await setCourseVideo(i, user, g);
     return;
   };
 
@@ -78,6 +72,8 @@ const PlaylistCard = (props) => {
           <Typography className={classes.heading}>{module.Title}</Typography>
         </AccordionSummary>
         {module.playlist  && module.playlist.map((i,index) => {
+          const selectedModuleIndex = Course?.Modules_Viewed.findIndex(m => m.playlist_id === i.feedid);
+          const a = (Course?.Modules_Viewed[selectedModuleIndex]?.Viewed_Videos || []).some(v => v.mediaid === i.mediaid);
           return (
             <AccordionDetails>
               <FormControlLabel
@@ -85,7 +81,7 @@ const PlaylistCard = (props) => {
                 onClick={(e) => selectVideo(e,i)}
                 control={<Checkbox />}
                 label={i.title}
-                // checked={c ? true : false}
+                checked={a ? true : false}
               />
             </AccordionDetails>
           );

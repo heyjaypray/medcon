@@ -6,7 +6,8 @@ import {
   INIT_MODULES,
   SELECT_COURSE,
   SET_COURSE_VIDEO,
-  ADD_COURSE_MODULE
+  ADD_COURSE_MODULE,
+  ADD_VIEWED_VIDEO
 } from './actions';
 
 const initialState = {
@@ -52,6 +53,11 @@ export default function (state = initialState, action) {
         ...state
       };
     case ADD_COURSE_MODULE:
+      return {
+        ...state,
+        user: { ...state.user, Subscribed_Courses: data.Subscribed_Courses },
+      };
+    case ADD_VIEWED_VIDEO:
       return {
         ...state,
         user: { ...state.user, Subscribed_Courses: data.Subscribed_Courses },

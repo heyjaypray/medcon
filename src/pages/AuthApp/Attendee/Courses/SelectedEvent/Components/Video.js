@@ -6,7 +6,7 @@ import { initModules, setCourseVideo, addCourseModule } from '../../../../../../
 import _ from 'lodash';
 
 const VideoPlayer = (props) => {
-  const { course, user, course_video, setCourseVideo, } = props;
+  const { course, user, course_video, setCourseVideo, addCourseModule } = props;
   const a = _.find(user && user.Subscribed_Courses, (o) => _.includes(o.course, course && course.id));
 
   useEffect(() => {
@@ -19,17 +19,15 @@ const VideoPlayer = (props) => {
         playlist_id: b.playlist_id,
         Viewed_Videos: [b.playlist[0]]
       };
-      a.Modules_Viewed.push(c);
-      initModules(user, a);
-    } if(a && a.Modules_Viewed && a.Modules_Viewed.length > 0) {
-      const d = a.Modules_Viewed;
-      const e = d && d[d.length -1].Viewed_Videos;
-      const f = e[e.length-1];
-      if(f) {
-        setCourseVideo(f, user, true);
-      }
+      addCourseModule(course, c, user);
+      setCourseVideo(b.playlist[0]);
+    } else {
+      const mv = a && a.Modules_Viewed;
+      const vv = mv && mv[mv.length-1].Viewed_Videos;
+      const video = vv && vv[vv.length-1];
+      setCourseVideo(video);
     }
-  },[a, course, setCourseVideo, user]);
+  },[a, addCourseModule, course, setCourseVideo, user]);
 
   if(course_video){
     return (
